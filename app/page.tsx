@@ -466,7 +466,14 @@ function playMusic(src: string, volume = 0.08) {
 }
 
 function musicForLevel(levelId: number) {
-  return `/audio/english-${((levelId - 1) % 3) + 1}.mp3`;
+  if (levelId <= 6) return '/audio/english-1.mp3';
+  if (levelId <= 13) return '/audio/english-2.mp3';
+  return '/audio/english-3.mp3';
+}
+
+function startInteractiveMusic(src: string, volume = 0.075) {
+  musicEnabled = true;
+  playMusic(src, volume);
 }
 
 export default function Page() {
@@ -484,17 +491,24 @@ export default function Page() {
 
   useEffect(() => {
     setProgress(loadProgress());
-    playMusic('/audio/menu.mp3', 0.075);
   }, []);
   useEffect(() => {
     localStorage.setItem('piliEnglishProgressV3', JSON.stringify(progress));
   }, [progress]);
 
   useEffect(() => {
+    if (!currentMusic) return;
     if (screen === 'home') playMusic('/audio/menu.mp3', 0.075);
     if (screen === 'englishMap') playMusic('/audio/english-1.mp3', 0.075);
     if (screen === 'level' && activeLevel) playMusic(musicForLevel(activeLevel.id), 0.07);
   }, [screen, activeLevel?.id]);
+
+  useEffect(() => {
+    if (screen !== 'englishMap') return;
+    setTimeout(() => {
+      document.getElementById('currentLevelNode')?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    }, 120);
+  }, [screen, progress.englishUnlocked]);
 
   const currentStep = activeLevel?.steps[stepIndex];
   const currentQuestion = useMemo(() => {
@@ -504,11 +518,13 @@ export default function Page() {
   }, [currentStep, mockIndex]);
 
   function openEnglishMap() {
+    startInteractiveMusic('/audio/english-1.mp3', 0.075);
     setScreen('englishMap');
     setActiveLevel(null);
   }
 
   function startLevel(level: Level) {
+    startInteractiveMusic(musicForLevel(level.id), 0.07);
     setActiveLevel(level);
     setScreen('level');
     setStepIndex(0);
@@ -634,22 +650,23 @@ export default function Page() {
 
   function finishLevel() {
     if (!activeLevel) return;
-    if (errors > 0) {
-      playSound('bad');
-      setFeedback(`🔁 Tuviste ${errors} error/es. Para desbloquear el siguiente nivel hay que terminar sin errores. Usá Pista o Solución y reintentá.`);
-      setCanUnderstand(false);
-      return;
-    }
+    const earnedStars = errors === 0 ? 3 : errors <= 2 ? 2 : 1;
+    const earnedCoins = earnedStars === 3 ? 50 : earnedStars === 2 ? 35 : 20;
     playSound('win');
     setTimeout(() => playSound('star'), 380);
     setTimeout(() => playSound('unlock'), 760);
-    setProgress((p) => ({
-      ...p,
-      stars: p.stars + 3,
-      coins: p.coins + 50,
-      englishUnlocked: Math.max(p.englishUnlocked, activeLevel.id + 1),
-      englishStars: { ...p.englishStars, [activeLevel.id]: 3 },
-    }));
+    setProgress((p) => {
+      const previousStars = p.englishStars[activeLevel.id] || 0;
+      const extraStars = Math.max(0, earnedStars - previousStars);
+      return {
+        ...p,
+        stars: p.stars + extraStars,
+        coins: p.coins + earnedCoins,
+        englishUnlocked: Math.max(p.englishUnlocked, activeLevel.id + 1),
+        englishStars: { ...p.englishStars, [activeLevel.id]: Math.max(previousStars, earnedStars) },
+      };
+    });
+    setFeedback(`🏆 Nivel completado. Ganaste ${'⭐'.repeat(earnedStars)} y desbloqueaste el siguiente nivel.`);
     setScreen('englishMap');
     setActiveLevel(null);
   }
@@ -669,8 +686,8 @@ export default function Page() {
         </picture>
         <div className="homeHint">Elegí una aventura</div>
         <div className="subjectButtons">
-          <button className="subjectBtn math" onClick={() => playSound('hint')}>➕ Matemáticas <small>Próximamente</small></button>
-          <button className="subjectBtn lengua" onClick={() => playSound('hint')}>📚 Lengua <small>Próximamente</small></button>
+          <button className="subjectBtn math" onClick={() => { startInteractiveMusic('/audio/menu.mp3', 0.075); playSound('hint'); }}>➕ Matemáticas <small>Próximamente</small></button>
+          <button className="subjectBtn lengua" onClick={() => { startInteractiveMusic('/audio/menu.mp3', 0.075); playSound('hint'); }}>📚 Lengua <small>Próximamente</small></button>
           <button className="subjectBtn english" onClick={openEnglishMap}>🇬🇧 Inglés <small>Jugar ahora</small></button>
         </div>
       </section>
@@ -678,23 +695,68 @@ export default function Page() {
   }
 
   if (screen === 'englishMap') {
-    return <main className="mapScreen bgEnglish">
-      <Top title="Mundo Inglés" progress={progress} back={() => setScreen('home')} />
-      <section className="mapHeader">
+    const mapHeight = 2860;
+    const points = levels.map((level, i) => {
+      const pattern = [31, 62, 70, 38, 27, 58];
+      return { level, x: pattern[i % pattern.length], y: mapHeight - 170 - i * 132 };
+    });
+    const pathD = points.map((p, i) => {
+      if (i === 0) return `M ${p.x} ${p.y}`;
+      const prev = points[i - 1];
+      const midY = (prev.y + p.y) / 2;
+      return ` C ${prev.x} ${midY}, ${p.x} ${midY}, ${p.x} ${p.y}`;
+    }).join('');
+    const currentIndex = Math.min(Math.max(progress.englishUnlocked, 1), levels.length) - 1;
+    const currentPoint = points[currentIndex] || points[0];
+    const selectedLevel = levels[currentIndex] || levels[0];
+
+    return <main className="mapScreen bgEnglish candyMapScreen">
+      <Top title="Mundo Inglés" progress={progress} back={() => { startInteractiveMusic('/audio/menu.mp3', 0.075); setScreen('home'); }} />
+      <section className="mapHeader compactMapHeader">
         <h1>🇬🇧 Mundo Inglés</h1>
-        <p>Food · Cooking Verbs · Kitchen Equipment · Adjectives · A/AN · Plurals · Tricky Words · Phonics · Reading · Writing</p>
+        <p>Food · Recipes · Grammar · Tricky Words · Phonics · Reading</p>
       </section>
-      <div className="levelMap">
-        {levels.map((level, i) => {
-          const unlocked = level.id <= progress.englishUnlocked;
-          const stars = progress.englishStars[level.id] || 0;
-          return <button key={level.id} className={`levelNode pos${(i % 20) + 1} ${unlocked ? 'unlocked' : 'locked'} ${stars ? 'done' : ''}`} onClick={() => unlocked ? startLevel(level) : playSound('bad')}>
-            <span className="nodeIcon">{level.id}</span>
-            <span className="nodeStars">{stars ? '⭐⭐⭐' : unlocked ? '☆☆☆' : ''}</span>
-          </button>;
-        })}
+      <div className="candyViewport" aria-label="Mapa de niveles de Inglés">
+        <div className="candyScroll" style={{ height: `${mapHeight}px` }}>
+          <svg className="candyPath" viewBox={`0 0 100 ${mapHeight}`} preserveAspectRatio="none" aria-hidden="true">
+            <path className="candyPathShadow" d={pathD} />
+            <path className="candyPathBase" d={pathD} />
+            <path className="candyPathDots" d={pathD} />
+          </svg>
+          <img
+            className="mapPili"
+            src="/assets/characters/pili-front.png"
+            alt="Pili"
+            style={{ left: `calc(${currentPoint.x}% - 54px)`, top: `${currentPoint.y - 94}px` }}
+          />
+          {points.map(({ level, x, y }) => {
+            const stars = progress.englishStars[level.id] || 0;
+            const unlocked = level.id <= progress.englishUnlocked;
+            const current = level.id === progress.englishUnlocked && !stars;
+            return <button
+              id={current ? 'currentLevelNode' : undefined}
+              key={level.id}
+              className={`candyNode ${unlocked ? 'unlocked' : 'locked'} ${stars ? 'done' : ''} ${current ? 'current' : ''}`}
+              style={{ left: `calc(${x}% - 32px)`, top: `${y - 32}px` }}
+              onClick={() => unlocked ? startLevel(level) : playSound('bad')}
+              title={`Nivel ${level.id}: ${level.title}`}
+            >
+              <span className="nodeNumber">{level.id}</span>
+              <span className="nodeStars">{stars ? '⭐'.repeat(stars) : unlocked ? '☆☆☆' : ''}</span>
+            </button>;
+          })}
+        </div>
       </div>
-      <button className="homeMini" onClick={() => setScreen('home')}>🏠 Casa</button>
+      <section className="mapLevelCard">
+        <div className="levelRoundBadge">{selectedLevel.id}</div>
+        <div>
+          <b>Nivel {selectedLevel.id}</b>
+          <span>{selectedLevel.title}</span>
+          <small>{selectedLevel.subtitle}</small>
+        </div>
+        <button onClick={() => startLevel(selectedLevel)}>¡JUGAR!</button>
+      </section>
+      <button className="homeMini" onClick={() => { startInteractiveMusic('/audio/menu.mp3', 0.075); setScreen('home'); }}>🏠 Casa</button>
     </main>;
   }
 
