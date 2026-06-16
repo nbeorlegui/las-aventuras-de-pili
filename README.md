@@ -1,8 +1,8 @@
-# Las Aventuras de Pili - Next.js
+# Las Aventuras de Pili
 
-Versión optimizada con imágenes WebP responsive incorporadas.
+App Next.js optimizada con fondos WebP, íconos instalables y audio infantil suave.
 
-## Ejecutar local
+## Ejecutar localmente
 
 ```cmd
 npm install
@@ -11,17 +11,22 @@ npm run dev
 
 Abrir: http://localhost:3000
 
-## Build
+## Producción / Netlify
 
 ```cmd
 npm run build
 ```
 
-## Netlify
-
-Configuración:
+En Netlify:
 
 - Build command: `npm run build`
 - Publish directory: `.next`
 
-Incluye `netlify.toml`.
+## Audio incluido
+
+- Música suave de menú.
+- Música suave para Mundo Inglés.
+- Música distinta por grupos de niveles.
+- Sonidos de acierto, error, pista, estrella, desbloqueo y nivel completado.
+
+La voz de Pili queda en pausa para una etapa futura.

@@ -424,18 +424,49 @@ function loadProgress(): Progress {
   }
 }
 
-function playSound(type: 'ok' | 'bad' | 'hint' | 'win' = 'ok') {
+let currentMusic: HTMLAudioElement | null = null;
+let musicEnabled = true;
+
+const soundFiles: Record<'ok' | 'bad' | 'hint' | 'win' | 'star' | 'unlock', string> = {
+  ok: '/audio/correct.mp3',
+  bad: '/audio/wrong.mp3',
+  hint: '/audio/hint.mp3',
+  win: '/audio/level-complete.mp3',
+  star: '/audio/star.mp3',
+  unlock: '/audio/unlock.mp3',
+};
+
+function playAudio(src: string, volume = 0.18) {
+  if (typeof window === 'undefined' || !musicEnabled) return;
   try {
-    const ctx = new AudioContext();
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-    osc.frequency.value = type === 'ok' ? 760 : type === 'bad' ? 160 : type === 'win' ? 960 : 520;
-    gain.gain.value = 0.045;
-    osc.start();
-    setTimeout(() => { osc.stop(); ctx.close(); }, type === 'bad' ? 260 : 150);
+    const audio = new Audio(src);
+    audio.volume = volume;
+    audio.play().catch(() => {});
   } catch {}
+}
+
+function playSound(type: 'ok' | 'bad' | 'hint' | 'win' | 'star' | 'unlock' = 'ok') {
+  const volume = type === 'bad' ? 0.13 : type === 'win' ? 0.18 : 0.16;
+  playAudio(soundFiles[type], volume);
+}
+
+function playMusic(src: string, volume = 0.08) {
+  if (typeof window === 'undefined' || !musicEnabled) return;
+  try {
+    if (currentMusic?.src.includes(src)) {
+      currentMusic.play().catch(() => {});
+      return;
+    }
+    if (currentMusic) currentMusic.pause();
+    currentMusic = new Audio(src);
+    currentMusic.loop = true;
+    currentMusic.volume = volume;
+    currentMusic.play().catch(() => {});
+  } catch {}
+}
+
+function musicForLevel(levelId: number) {
+  return `/audio/english-${((levelId - 1) % 3) + 1}.mp3`;
 }
 
 export default function Page() {
@@ -451,10 +482,19 @@ export default function Page() {
   const [feedback, setFeedback] = useState('');
   const [canUnderstand, setCanUnderstand] = useState(false);
 
-  useEffect(() => setProgress(loadProgress()), []);
+  useEffect(() => {
+    setProgress(loadProgress());
+    playMusic('/audio/menu.mp3', 0.075);
+  }, []);
   useEffect(() => {
     localStorage.setItem('piliEnglishProgressV3', JSON.stringify(progress));
   }, [progress]);
+
+  useEffect(() => {
+    if (screen === 'home') playMusic('/audio/menu.mp3', 0.075);
+    if (screen === 'englishMap') playMusic('/audio/english-1.mp3', 0.075);
+    if (screen === 'level' && activeLevel) playMusic(musicForLevel(activeLevel.id), 0.07);
+  }, [screen, activeLevel?.id]);
 
   const currentStep = activeLevel?.steps[stepIndex];
   const currentQuestion = useMemo(() => {
@@ -601,6 +641,8 @@ export default function Page() {
       return;
     }
     playSound('win');
+    setTimeout(() => playSound('star'), 380);
+    setTimeout(() => playSound('unlock'), 760);
     setProgress((p) => ({
       ...p,
       stars: p.stars + 3,
