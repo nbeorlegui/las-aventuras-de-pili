@@ -81,8 +81,27 @@ const defaultProgress: Progress = {
 const levels: Level[] = [
   {
     id: 1,
-    title: 'Recipe Academy',
-    subtitle: 'Partes de una receta',
+    title: 'Food Vocabulary',
+    subtitle: 'Comidas pp.87-89',
+    world: 'Food Island',
+    icon: '🍎',
+    kind: 'choice',
+    steps: [
+      { type: 'theory', title: 'Food = Comida', blocks: [
+        { en: 'Fruit', es: 'Fruta', example: 'apple, banana, orange, kiwi, strawberry, cherry' },
+        { en: 'Food for recipes', es: 'Comida para recetas', example: 'bread, ham, cheese, lettuce, tomato' },
+        { en: 'Baking food', es: 'Ingredientes para hornear', example: 'eggs, flour, milk, sugar, butter' },
+        { en: 'Drinks', es: 'Bebidas', example: 'water, milk, lemonade, milkshake' },
+      ] },
+      { type: 'choice', prompt: 'apple', spanish: '¿Qué significa?', options: ['manzana', 'lechuga', 'harina'], answer: 'manzana', hint: 'Es una fruta roja o verde.', explain: 'Apple = manzana.' },
+      { type: 'choice', prompt: 'flour', spanish: '¿Qué significa?', options: ['harina', 'banana', 'vaso'], answer: 'harina', hint: 'Se usa para hacer muffins o tortas.', explain: 'Flour = harina.' },
+      { type: 'choice', prompt: 'lettuce', spanish: '¿Qué significa?', options: ['lechuga', 'queso', 'huevo'], answer: 'lechuga', hint: 'Es verde y puede ir en un sandwich.', explain: 'Lettuce = lechuga.' },
+    ],
+  },
+  {
+    id: 2,
+    title: 'Recipe Parts',
+    subtitle: 'Title · Ingredients · Instructions',
     world: 'Recipe Forest',
     icon: '📖',
     kind: 'theory',
@@ -93,60 +112,63 @@ const levels: Level[] = [
         { en: 'Ingredients', es: 'Ingredientes: cosas que necesito', example: 'milk, apple, sugar, eggs, flour' },
         { en: 'Instructions', es: 'Instrucciones: pasos con acciones', example: 'Wash, Peel, Mix, Pour, Serve' },
       ] },
+      { type: 'choice', prompt: 'Fruit Salad', spanish: '¿Qué parte de la receta es?', options: ['Title', 'Ingredients', 'Instructions'], answer: 'Title', hint: 'Es el nombre de la receta.', explain: 'Fruit Salad es el título.' },
       { type: 'choice', prompt: 'Apple, banana, milk', spanish: 'manzana, banana, leche', options: ['Title', 'Ingredients', 'Instructions'], answer: 'Ingredients', hint: 'Son cosas que necesito para preparar.', explain: 'Van en Ingredients porque son alimentos/cosas.' },
       { type: 'choice', prompt: 'Wash the fruit.', spanish: 'Lavar la fruta.', options: ['Title', 'Ingredients', 'Instructions'], answer: 'Instructions', hint: 'Empieza con un verbo: Wash.', explain: 'Es una Instruction porque indica un paso.' },
     ],
   },
   {
-    id: 2,
+    id: 3,
     title: 'Ingredients Detective',
     subtitle: 'Cosas, no acciones',
     world: 'Recipe Forest',
-    icon: '🍎',
+    icon: '🍓',
     kind: 'choice',
     steps: [
       { type: 'choice', prompt: '2 scoops of vanilla ice cream', spanish: '2 bochas de helado de vainilla', options: ['Ingredient', 'Instruction'], answer: 'Ingredient', hint: 'Es algo que necesito.', explain: 'Es Ingredient porque es una cosa/comida.' },
       { type: 'choice', prompt: 'strawberries', spanish: 'frutillas', options: ['Ingredient', 'Instruction'], answer: 'Ingredient', hint: '¿Es una comida o una acción?', explain: 'Strawberries son ingredientes.' },
       { type: 'choice', prompt: 'Pour the milk.', spanish: 'Verter la leche.', options: ['Ingredient', 'Instruction'], answer: 'Instruction', hint: 'Pour es una acción.', explain: 'Es Instruction porque indica qué hacer.' },
-    ],
-  },
-  {
-    id: 3,
-    title: 'Cooking Verbs 1',
-    subtitle: 'Verbos de cocina',
-    world: 'Cooking Castle',
-    icon: '👩‍🍳',
-    kind: 'choice',
-    steps: [
-      { type: 'choice', prompt: 'Peel', spanish: 'Elegí el significado', options: ['Pelar', 'Mezclar', 'Servir'], answer: 'Pelar', hint: 'Lo hacemos con la cáscara.', explain: 'Peel = pelar.' },
-      { type: 'choice', prompt: 'Chop', spanish: 'Elegí el significado', options: ['Cortar', 'Hornear', 'Enfriar'], answer: 'Cortar', hint: 'Se hace con cuchillo.', explain: 'Chop = cortar.' },
-      { type: 'choice', prompt: 'Mix', spanish: 'Elegí el significado', options: ['Mezclar', 'Romper', 'Lavar'], answer: 'Mezclar', hint: 'Juntar todo en un bowl.', explain: 'Mix = mezclar.' },
+      { type: 'choice', prompt: 'Chop the banana.', spanish: 'Cortar la banana.', options: ['Ingredient', 'Instruction'], answer: 'Instruction', hint: 'Chop es un verbo.', explain: 'Es una instrucción porque empieza con una acción.' },
     ],
   },
   {
     id: 4,
-    title: 'Cooking Verbs 2',
-    subtitle: 'Más acciones',
+    title: 'Cooking Verbs',
+    subtitle: 'Verbos de cocina pp.94-95',
     world: 'Cooking Castle',
-    icon: '🥣',
+    icon: '👩‍🍳',
     kind: 'choice',
     steps: [
+      { type: 'theory', title: 'Cooking verbs = acciones de cocina', blocks: [
+        { en: 'Wash · Peel · Chop · Slice', es: 'Lavar · Pelar · Cortar · Cortar en rodajas' },
+        { en: 'Add · Mix · Stir · Pour', es: 'Agregar · Mezclar · Revolver · Verter' },
+        { en: 'Crack · Bake · Squeeze · Serve', es: 'Romper · Hornear · Exprimir · Servir' },
+        { en: 'Rule', es: 'Las instrucciones suelen empezar con un cooking verb.', example: 'Mix everything. / Pour the milk.' },
+      ] },
+      { type: 'choice', prompt: 'Peel', spanish: 'Elegí el significado', options: ['Pelar', 'Mezclar', 'Servir'], answer: 'Pelar', hint: 'Lo hacemos con la cáscara.', explain: 'Peel = pelar.' },
       { type: 'choice', prompt: 'Pour', spanish: 'Elegí el significado', options: ['Verter', 'Cortar', 'Pelar'], answer: 'Verter', hint: 'Como poner leche en un vaso.', explain: 'Pour = verter.' },
-      { type: 'choice', prompt: 'Bake', spanish: 'Elegí el significado', options: ['Hornear', 'Revolver', 'Servir'], answer: 'Hornear', hint: 'Se hace en el horno.', explain: 'Bake = hornear.' },
       { type: 'choice', prompt: 'Crack the eggs', spanish: '¿Qué significa?', options: ['Romper los huevos', 'Lavar los huevos', 'Servir los huevos'], answer: 'Romper los huevos', hint: 'Crack = romper.', explain: 'Crack the eggs = romper los huevos.' },
+      { type: 'choice', prompt: 'Squeeze the lemon', spanish: '¿Qué significa?', options: ['Exprimir el limón', 'Hornear el limón', 'Cortar en rodajas'], answer: 'Exprimir el limón', hint: 'Se hace para sacar jugo.', explain: 'Squeeze = exprimir.' },
     ],
   },
   {
     id: 5,
-    title: 'Kitchen Tools',
+    title: 'Kitchen Equipment',
     subtitle: 'Utensilios p.94',
     world: 'Cooking Castle',
     icon: '🥄',
     kind: 'choice',
     steps: [
+      { type: 'theory', title: 'Kitchen equipment = utensilios de cocina', blocks: [
+        { en: 'fridge', es: 'heladera' },
+        { en: 'cup · glass', es: 'taza · vaso' },
+        { en: 'spoon · plate · bowl', es: 'cuchara · plato · bowl/recipiente' },
+        { en: 'blender', es: 'licuadora', example: 'We use a blender for a milkshake.' },
+      ] },
       { type: 'choice', prompt: 'blender', spanish: '¿Qué es?', options: ['Licuadora', 'Heladera', 'Plato'], answer: 'Licuadora', hint: 'Sirve para preparar milkshake.', explain: 'Blender = licuadora.' },
       { type: 'choice', prompt: 'spoon', spanish: '¿Qué es?', options: ['Cuchara', 'Vaso', 'Taza'], answer: 'Cuchara', hint: 'Se usa para revolver o comer sopa.', explain: 'Spoon = cuchara.' },
       { type: 'choice', prompt: 'fridge', spanish: '¿Qué es?', options: ['Heladera', 'Bowl', 'Vaso'], answer: 'Heladera', hint: 'Sirve para enfriar.', explain: 'Fridge = heladera.' },
+      { type: 'choice', prompt: 'You serve food on a...', spanish: 'Servís comida en un...', options: ['plate', 'fridge', 'blender'], answer: 'plate', hint: 'Es un plato.', explain: 'Plate = plato.' },
     ],
   },
   {
@@ -157,9 +179,16 @@ const levels: Level[] = [
     icon: '🍋',
     kind: 'choice',
     steps: [
+      { type: 'theory', title: 'Adjectives describe food', blocks: [
+        { en: 'fresh · healthy · unhealthy', es: 'fresco · saludable · poco saludable' },
+        { en: 'bitter · sour · sweet', es: 'amargo · ácido · dulce' },
+        { en: 'soft · crispy', es: 'suave/blando · crocante' },
+        { en: 'light · heavy · tasty · yummy', es: 'liviano · pesado · rico · delicioso' },
+      ] },
       { type: 'choice', prompt: 'lemon', spanish: '¿Cómo es?', options: ['sour', 'sweet', 'crispy'], answer: 'sour', hint: 'El limón es ácido.', explain: 'Lemon is sour.' },
-      { type: 'choice', prompt: 'chocolate', spanish: '¿Cómo es?', options: ['sweet', 'bitter', 'heavy'], answer: 'sweet', hint: 'El chocolate suele ser dulce.', explain: 'Chocolate is sweet.' },
+      { type: 'choice', prompt: 'candy', spanish: '¿Cómo es?', options: ['sweet', 'bitter', 'heavy'], answer: 'sweet', hint: 'Los caramelos son dulces.', explain: 'Candy is sweet.' },
       { type: 'choice', prompt: 'salad', spanish: 'Puede ser...', options: ['healthy', 'unhealthy', 'bitter'], answer: 'healthy', hint: 'Una ensalada suele ser saludable.', explain: 'Salad is healthy.' },
+      { type: 'choice', prompt: 'chips', spanish: 'Pueden ser...', options: ['crispy', 'sour', 'soft'], answer: 'crispy', hint: 'Hacen crunch.', explain: 'Chips are crispy.' },
     ],
   },
   {
@@ -170,69 +199,104 @@ const levels: Level[] = [
     icon: '🔠',
     kind: 'choice',
     steps: [
+      { type: 'theory', title: 'A / AN', blocks: [
+        { en: 'A', es: 'Se usa antes de sonido consonante.', example: 'a banana, a cherry, a spoon' },
+        { en: 'AN', es: 'Se usa antes de sonido vocal.', example: 'an apple, an orange, an egg' },
+      ] },
       { type: 'choice', prompt: '___ apple', spanish: 'Completá', options: ['a', 'an'], answer: 'an', hint: 'Apple empieza con vocal.', explain: 'Se escribe an apple.' },
       { type: 'choice', prompt: '___ banana', spanish: 'Completá', options: ['a', 'an'], answer: 'a', hint: 'Banana empieza con consonante.', explain: 'Se escribe a banana.' },
       { type: 'choice', prompt: '___ orange', spanish: 'Completá', options: ['a', 'an'], answer: 'an', hint: 'Orange empieza con vocal.', explain: 'Se escribe an orange.' },
+      { type: 'choice', prompt: '___ egg', spanish: 'Completá', options: ['a', 'an'], answer: 'an', hint: 'Egg empieza con vocal.', explain: 'Se escribe an egg.' },
     ],
   },
   {
     id: 8,
     title: 'Plurals',
-    subtitle: 's, es, ies',
+    subtitle: 's, es/oes, ies p.92',
     world: 'Grammar Mountain',
     icon: '🍒',
     kind: 'choice',
     steps: [
+      { type: 'theory', title: 'Plural Rules', blocks: [
+        { en: '+ S', es: 'La mayoría suma S.', example: 'apple → apples / banana → bananas' },
+        { en: '+ ES', es: 'Algunas palabras suman ES.', example: 'tomato → tomatoes / potato → potatoes' },
+        { en: 'Y → IES', es: 'Si termina en consonante + Y, cambia a IES.', example: 'cherry → cherries / strawberry → strawberries' },
+      ] },
       { type: 'choice', prompt: 'apple →', spanish: 'Plural correcto', options: ['apples', 'applees', 'applies'], answer: 'apples', hint: 'La mayoría suma S.', explain: 'apple → apples.' },
       { type: 'choice', prompt: 'tomato →', spanish: 'Plural correcto', options: ['tomatos', 'tomatoes', 'tomaties'], answer: 'tomatoes', hint: 'Tomato suma ES.', explain: 'tomato → tomatoes.' },
       { type: 'choice', prompt: 'cherry →', spanish: 'Plural correcto', options: ['cherrys', 'cherries', 'cherryes'], answer: 'cherries', hint: 'Consonante + y cambia a ies.', explain: 'cherry → cherries.' },
+      { type: 'choice', prompt: 'strawberry →', spanish: 'Plural correcto', options: ['strawberries', 'strawberrys', 'strawberryes'], answer: 'strawberries', hint: 'Termina con consonante + Y.', explain: 'strawberry → strawberries.' },
     ],
   },
   {
     id: 9,
     title: 'Tricky Words 1',
-    subtitle: 'I, the, he, she',
+    subtitle: 'I · the · he · she · they',
     world: 'Tricky Woods',
     icon: '🧠',
     kind: 'choice',
     steps: [
+      { type: 'theory', title: 'Tricky Words', blocks: [
+        { en: 'I · the · he · she · they', es: 'yo · el/la · él · ella · ellos' },
+        { en: 'my · like · no · go · to', es: 'mi · gustar · no · ir · a/para' },
+        { en: 'we · you · your', es: 'nosotros · vos/ustedes · tu/tus' },
+      ] },
       { type: 'choice', prompt: '___ like apples.', spanish: 'Yo = ?', options: ['I', 'the', 'go'], answer: 'I', hint: 'Yo en inglés se escribe I.', explain: 'I like apples.' },
       { type: 'choice', prompt: '___ sandwich is yummy.', spanish: 'El sandwich...', options: ['The', 'He', 'No'], answer: 'The', hint: 'El/La = The.', explain: 'The sandwich is yummy.' },
-      { type: 'choice', prompt: '___ is my dad.', spanish: 'Él es mi papá.', options: ['He', 'She', 'They'], answer: 'He', hint: 'Él = He.', explain: 'He is my dad.' },
+      { type: 'choice', prompt: '___ is my mum.', spanish: 'Ella es mi mamá.', options: ['She', 'He', 'They'], answer: 'She', hint: 'Ella = She.', explain: 'She is my mum.' },
     ],
   },
   {
     id: 10,
     title: 'Tricky Words 2',
-    subtitle: 'we, you, your',
+    subtitle: 'my · like · no · go · to · we · you · your',
     world: 'Tricky Woods',
     icon: '✨',
     kind: 'choice',
     steps: [
-      { type: 'choice', prompt: '___ are friends.', spanish: 'Nosotros somos amigos.', options: ['We', 'Go', 'My'], answer: 'We', hint: 'Nosotros = We.', explain: 'We are friends.' },
       { type: 'choice', prompt: 'This is ___ book.', spanish: 'Tu libro.', options: ['your', 'you', 'no'], answer: 'your', hint: 'Tu/tus = your.', explain: 'This is your book.' },
-      { type: 'choice', prompt: 'I like ___ recipe.', spanish: 'Me gusta tu receta.', options: ['your', 'you', 'go'], answer: 'your', hint: 'Antes de recipe usamos your.', explain: 'I like your recipe.' },
+      { type: 'choice', prompt: '___ are friends.', spanish: 'Nosotros somos amigos.', options: ['We', 'Go', 'My'], answer: 'We', hint: 'Nosotros = We.', explain: 'We are friends.' },
+      { type: 'choice', prompt: 'I ___ lemonade.', spanish: 'Me gusta la limonada.', options: ['like', 'to', 'your'], answer: 'like', hint: 'Me gusta = I like.', explain: 'I like lemonade.' },
+      { type: 'choice', prompt: 'I go ___ school.', spanish: 'Voy a la escuela.', options: ['to', 'the', 'no'], answer: 'to', hint: 'A/para = to.', explain: 'I go to school.' },
     ],
   },
   {
     id: 11,
-    title: 'Phonics 1',
-    subtitle: 'S A T P I N',
+    title: 'Phonics 1st Form A',
+    subtitle: 'S A T P I N M D G O C K CK',
     world: 'Phonics Island',
     icon: '🔊',
     kind: 'choice',
     steps: [
+      { type: 'theory', title: 'Phonics sounds', blocks: [
+        { en: 'S A T P I N', es: 'Sonidos iniciales para leer palabras cortas.', example: 'sat, pin, tin, tap' },
+        { en: 'M D G O C K CK', es: 'Más sonidos para formar palabras.', example: 'dog, mop, cat, kick' },
+      ] },
       { type: 'choice', prompt: '¿Cuál palabra empieza con S?', spanish: 'S sound', options: ['sun', 'apple', 'dog'], answer: 'sun', hint: 'Sun empieza con S.', explain: 'sun empieza con S.' },
       { type: 'choice', prompt: '¿Cuál palabra empieza con P?', spanish: 'P sound', options: ['plate', 'milk', 'egg'], answer: 'plate', hint: 'Plate empieza con P.', explain: 'plate empieza con P.' },
-      { type: 'choice', prompt: '¿Cuál palabra tiene N?', spanish: 'N sound', options: ['banana', 'cup', 'fish'], answer: 'banana', hint: 'Banana termina con N-A.', explain: 'banana tiene N.' },
+      { type: 'choice', prompt: '¿Cuál palabra tiene CK?', spanish: 'CK sound', options: ['duck', 'chair', 'rain'], answer: 'duck', hint: 'Duck termina con CK.', explain: 'duck tiene CK.' },
     ],
   },
   {
     id: 12,
-    title: 'Phonics 2',
-    subtitle: 'CH, SH, TH',
+    title: 'Phonics 1st Form B',
+    subtitle: 'E U R H B F FF L LL LE SS J V W X Z Y',
     world: 'Phonics Island',
     icon: '🎧',
+    kind: 'choice',
+    steps: [
+      { type: 'choice', prompt: '¿Cuál palabra tiene FF?', spanish: 'FF sound', options: ['muffin', 'dog', 'apple'], answer: 'muffin', hint: 'Muffin tiene FF.', explain: 'muffin tiene FF.' },
+      { type: 'choice', prompt: '¿Cuál palabra termina con LL?', spanish: 'LL sound', options: ['bell', 'boat', 'rain'], answer: 'bell', hint: 'Bell termina con LL.', explain: 'bell tiene LL.' },
+      { type: 'choice', prompt: '¿Cuál palabra tiene SS?', spanish: 'SS sound', options: ['glass', 'cherry', 'moon'], answer: 'glass', hint: 'Glass tiene SS.', explain: 'glass tiene SS.' },
+      { type: 'choice', prompt: '¿Cuál palabra empieza con W?', spanish: 'W sound', options: ['water', 'egg', 'lemon'], answer: 'water', hint: 'Water empieza con W.', explain: 'water empieza con W.' },
+    ],
+  },
+  {
+    id: 13,
+    title: 'Phonics 1st Form C',
+    subtitle: 'CH · SH · TH',
+    world: 'Phonics Island',
+    icon: '🌈',
     kind: 'choice',
     steps: [
       { type: 'choice', prompt: '¿Cuál palabra tiene CH?', spanish: 'CH sound', options: ['cherry', 'ship', 'three'], answer: 'cherry', hint: 'CH como cherry.', explain: 'cherry tiene CH.' },
@@ -241,20 +305,25 @@ const levels: Level[] = [
     ],
   },
   {
-    id: 13,
-    title: 'Phonics 3',
-    subtitle: 'AI, EE, IGH, OA, OO',
+    id: 14,
+    title: 'Phonics 2nd Form',
+    subtitle: 'AI WH VE DGE TCH NK EE IGH OA OO UR',
     world: 'Phonics Island',
-    icon: '🌈',
+    icon: '🔡',
     kind: 'choice',
     steps: [
+      { type: 'theory', title: '2nd Form sounds', blocks: [
+        { en: 'AI · EE · IGH · OA · OO · UR', es: 'Sonidos largos / combinaciones.', example: 'rain, tree, night, boat, moon, turn' },
+        { en: 'WH · -VE · DGE · TCH · NK', es: 'Combinaciones importantes.', example: 'whale, five, bridge, watch, pink' },
+      ] },
       { type: 'choice', prompt: '¿Cuál palabra tiene AI?', spanish: 'AI sound', options: ['rain', 'tree', 'boat'], answer: 'rain', hint: 'Rain tiene AI.', explain: 'rain tiene AI.' },
-      { type: 'choice', prompt: '¿Cuál palabra tiene EE?', spanish: 'EE sound', options: ['tree', 'light', 'moon'], answer: 'tree', hint: 'Tree tiene EE.', explain: 'tree tiene EE.' },
-      { type: 'choice', prompt: '¿Cuál palabra tiene OA?', spanish: 'OA sound', options: ['boat', 'spoon', 'night'], answer: 'boat', hint: 'Boat tiene OA.', explain: 'boat tiene OA.' },
+      { type: 'choice', prompt: '¿Cuál palabra tiene IGH?', spanish: 'IGH sound', options: ['night', 'spoon', 'chair'], answer: 'night', hint: 'Night tiene IGH.', explain: 'night tiene IGH.' },
+      { type: 'choice', prompt: '¿Cuál palabra tiene TCH?', spanish: 'TCH sound', options: ['watch', 'whale', 'tree'], answer: 'watch', hint: 'Watch termina con TCH.', explain: 'watch tiene TCH.' },
+      { type: 'choice', prompt: '¿Cuál palabra tiene NK?', spanish: 'NK sound', options: ['pink', 'moon', 'boat'], answer: 'pink', hint: 'Pink termina con NK.', explain: 'pink tiene NK.' },
     ],
   },
   {
-    id: 14,
+    id: 15,
     title: 'Order the Recipe',
     subtitle: 'Ordenar instrucciones',
     world: 'Recipe Harbor',
@@ -262,53 +331,56 @@ const levels: Level[] = [
     kind: 'sequence',
     steps: [
       { type: 'sequence', prompt: 'Ordená la receta de Fruit Salad', spanish: 'Primero se lava, luego se corta, después se mezcla y al final se sirve.', options: ['Serve the salad.', 'Wash the fruit.', 'Mix everything.', 'Chop the fruit.'], answer: ['Wash the fruit.', 'Chop the fruit.', 'Mix everything.', 'Serve the salad.'], hint: 'Pensá qué harías primero en la cocina.', explain: 'Orden correcto: Wash, Chop, Mix, Serve.' },
+      { type: 'sequence', prompt: 'Ordená la receta de Vanilla Milkshake', spanish: 'Primero leche, luego helado, mezclar y servir.', options: ['Mix everything.', 'Pour the milk into the blender.', 'Serve in a glass.', 'Add the ice cream.'], answer: ['Pour the milk into the blender.', 'Add the ice cream.', 'Mix everything.', 'Serve in a glass.'], hint: 'Para un milkshake primero usamos la licuadora.', explain: 'Orden correcto: Pour, Add, Mix, Serve.' },
     ],
   },
   {
-    id: 15,
+    id: 16,
     title: 'Recipe Builder',
-    subtitle: 'Armar una receta',
+    subtitle: 'Armar una receta escrita',
     world: 'Recipe Harbor',
     icon: '🍓',
     kind: 'builder',
     steps: [
       { type: 'builder', prompt: 'Elegí SOLO los ingredientes para Fruit Salad.', ingredients: ['apple', 'banana', 'orange', 'kiwi', 'strawberries'], instructions: ['Wash the fruit.', 'Chop the banana.', 'Mix everything.'], wrongItems: ['Peel the apple.', 'Pour the juice.', 'Chill the salad.'], hint: 'Ingredientes son cosas/comidas, no acciones.' },
-    ],
-  },
-  {
-    id: 16,
-    title: 'Mock Reading 1',
-    subtitle: 'Muffins',
-    world: 'Reading Kingdom',
-    icon: '📘',
-    kind: 'mock',
-    steps: [
-      { type: 'mock', textTitle: 'Text A - Muffins', text: ['Crack the eggs,', 'Pour the milk,', 'Add the flour,', 'Mix it quick.', 'Bake the muffins,', 'Warm and yummy!'], questions: [
-        { type: 'choice', prompt: 'The poem is about...', options: ['playing', 'Baking', 'a birthday party'], answer: 'Baking', hint: 'Menciona bake y muffins.', explain: 'El poema es sobre Baking.' },
-        { type: 'choice', prompt: 'It is a recipe for...', options: ['muffins', 'fruit salad', 'sandwich'], answer: 'muffins', hint: 'La palabra muffins aparece en el texto.', explain: 'Es una receta para muffins.' },
-        { type: 'choice', prompt: 'Find one word that shows the food is good.', options: ['yummy', 'eggs', 'flour'], answer: 'yummy', hint: 'Yummy significa delicioso.', explain: 'Yummy muestra que la comida es rica.' },
-      ] },
+      { type: 'builder', prompt: 'Elegí SOLO los ingredientes para Vanilla Milkshake.', ingredients: ['milk', 'vanilla ice cream', 'vanilla extract', 'cherry'], instructions: ['Pour the milk.', 'Mix everything.'], wrongItems: ['Add the ice cream.', 'Serve in a glass.', 'Wash the fruit.'], hint: 'Ingredientes son cosas que van en la receta.' },
     ],
   },
   {
     id: 17,
-    title: 'Mock Reading 2',
-    subtitle: 'Vanilla Milkshake',
+    title: 'Reading Poems',
+    subtitle: 'Poemas sobre comida',
     world: 'Reading Kingdom',
-    icon: '🥤',
+    icon: '📘',
     kind: 'mock',
     steps: [
-      { type: 'mock', textTitle: 'Text B - Vanilla Milkshake', text: ['Ingredients: vanilla ice cream, milk, vanilla extract.', 'Instructions:', '1. Pour the milk into the blender.', '2. Add the ice cream.', '3. Mix everything.', '4. Serve with a cherry.'], questions: [
-        { type: 'choice', prompt: 'Which is an ingredient?', options: ['milk', 'pour', 'serve'], answer: 'milk', hint: 'Ingredient = cosa que necesito.', explain: 'Milk es ingrediente.' },
-        { type: 'choice', prompt: 'Why are Pour, Add, Mix and Serve important?', options: ['They tell us what to do', 'They are ingredients', 'They are colors'], answer: 'They tell us what to do', hint: 'Son cooking verbs.', explain: 'Son instrucciones/acciones.' },
-        { type: 'choice', prompt: 'Where do you pour the milk?', options: ['into the blender', 'on a plate', 'in the fridge'], answer: 'into the blender', hint: 'Leé el paso 1.', explain: 'Pour the milk into the blender.' },
+      { type: 'mock', textTitle: 'Text A - Muffins Poem', text: ['Crack the eggs,', 'Pour the milk,', 'Add the flour,', 'Mix it quick.', 'Bake the muffins,', 'Warm and yummy!'], questions: [
+        { type: 'choice', prompt: 'The poem is about...', options: ['playing', 'Baking', 'a birthday party'], answer: 'Baking', hint: 'Menciona bake y muffins.', explain: 'El poema es sobre Baking.' },
+        { type: 'choice', prompt: 'It is a recipe for...', options: ['muffins', 'fruit salad', 'sandwich'], answer: 'muffins', hint: 'La palabra muffins aparece en el texto.', explain: 'Es una receta para muffins.' },
+        { type: 'choice', prompt: 'Find one word that shows the food is good.', options: ['yummy', 'eggs', 'flour'], answer: 'yummy', hint: 'Yummy significa delicioso.', explain: 'Yummy muestra que la comida es rica.' },
+        { type: 'choice', prompt: 'Find one tricky word.', options: ['the', 'flour', 'muffins'], answer: 'the', hint: 'The está en la lista de tricky words.', explain: 'The es tricky word.' },
       ] },
     ],
   },
   {
     id: 18,
-    title: 'Healthy Sandwich',
-    subtitle: 'Comprensión lectora',
+    title: 'Reading Recipes 1',
+    subtitle: 'Vanilla Milkshake',
+    world: 'Reading Kingdom',
+    icon: '🥤',
+    kind: 'mock',
+    steps: [
+      { type: 'mock', textTitle: 'Text B - Vanilla Milkshake', text: ['Title: Vanilla Milkshake', 'Ingredients: 2 scoops of vanilla ice cream, milk, vanilla extract, whipped cream, cherry.', 'Instructions:', '1. Pour the milk into the blender.', '2. Add the ice cream and vanilla extract.', '3. Mix everything.', '4. Pour into a tall glass.', '5. Serve with a cherry.'], questions: [
+        { type: 'choice', prompt: 'Which is an ingredient?', options: ['milk', 'pour', 'serve'], answer: 'milk', hint: 'Ingredient = cosa que necesito.', explain: 'Milk es ingrediente.' },
+        { type: 'choice', prompt: 'How many scoops of ice cream do you need?', options: ['2 scoops', '3 lemons', '1 plate'], answer: '2 scoops', hint: 'Está en Ingredients.', explain: 'You need 2 scoops.' },
+        { type: 'choice', prompt: 'Why are Pour, Add, Mix and Serve important?', options: ['They tell us what to do', 'They are ingredients', 'They are colors'], answer: 'They tell us what to do', hint: 'Son cooking verbs.', explain: 'Son instrucciones/acciones.' },
+      ] },
+    ],
+  },
+  {
+    id: 19,
+    title: 'Reading Recipes 2',
+    subtitle: 'Sandwich + Lemonade',
     world: 'Reading Kingdom',
     icon: '🥪',
     kind: 'mock',
@@ -318,16 +390,6 @@ const levels: Level[] = [
         { type: 'choice', prompt: 'Which word is a cooking verb?', options: ['Slice', 'lettuce', 'tomato'], answer: 'Slice', hint: 'Un cooking verb es una acción.', explain: 'Slice = cortar en rodajas.' },
         { type: 'choice', prompt: 'Which is kitchen equipment?', options: ['plate', 'ham', 'healthy'], answer: 'plate', hint: 'Equipment/utensil = herramienta de cocina.', explain: 'Plate = plato.' },
       ] },
-    ],
-  },
-  {
-    id: 19,
-    title: 'Fresh Lemonade',
-    subtitle: 'Lectura + ingredientes',
-    world: 'Reading Kingdom',
-    icon: '🍋',
-    kind: 'mock',
-    steps: [
       { type: 'mock', textTitle: 'Text B - Fresh Lemonade', text: ['Ingredients: 3 lemons, cold water, sugar, ice cubes, mint leaves.', 'Instructions:', '1. Cut the lemons in half.', '2. Squeeze the juice.', '3. Add sugar and stir.', '4. Pour in cold water.', '5. Taste your lemonade.'], questions: [
         { type: 'choice', prompt: 'How many lemons do you need?', options: ['3 lemons', '2 eggs', '1 banana'], answer: '3 lemons', hint: 'Está en Ingredients.', explain: 'You need 3 lemons.' },
         { type: 'choice', prompt: 'Which is an instruction?', options: ['Squeeze the juice.', '3 lemons', 'ice cubes'], answer: 'Squeeze the juice.', hint: 'Empieza con un verbo.', explain: 'Squeeze the juice es una instrucción.' },
@@ -337,35 +399,25 @@ const levels: Level[] = [
   },
   {
     id: 20,
-    title: 'Big Ben Challenge',
-    subtitle: 'Desafío final',
-    world: 'Final Challenge',
+    title: 'Mid-Term Challenge',
+    subtitle: 'Reading + Writing final',
+    world: 'Big Ben Challenge',
     icon: '🏆',
     kind: 'choice',
     steps: [
       { type: 'choice', prompt: 'Ingredients are...', spanish: 'Los ingredientes son...', options: ['things we need', 'steps we follow', 'sounds'], answer: 'things we need', hint: 'Ingredientes = cosas.', explain: 'Ingredients are things we need.' },
       { type: 'choice', prompt: 'Instructions usually start with...', spanish: 'Las instrucciones suelen empezar con...', options: ['a cooking verb', 'a color', 'a number only'], answer: 'a cooking verb', hint: 'Ej: Wash, Mix, Pour.', explain: 'Instructions start with action verbs.' },
       { type: 'choice', prompt: 'Choose the correct sentence.', spanish: 'Elegí la oración correcta.', options: ['An apple is sweet.', 'A apple is sweet.', 'Apple an is sweet.'], answer: 'An apple is sweet.', hint: 'Apple empieza con vocal.', explain: 'Correcto: An apple is sweet.' },
+      { type: 'choice', prompt: 'Choose the correct recipe part for: Mix everything.', spanish: 'Elegí la parte correcta.', options: ['Instructions', 'Ingredients', 'Title'], answer: 'Instructions', hint: 'Mix es una acción.', explain: 'Mix everything va en Instructions.' },
+      { type: 'choice', prompt: 'strawberry →', spanish: 'Plural correcto', options: ['strawberries', 'strawberrys', 'strawberryes'], answer: 'strawberries', hint: 'Y cambia a IES.', explain: 'strawberry → strawberries.' },
     ],
   },
 ];
 
-
-const mapPoints = [
-  { x: 18, y: 16 }, { x: 34, y: 20 }, { x: 52, y: 18 }, { x: 69, y: 25 }, { x: 61, y: 34 },
-  { x: 45, y: 39 }, { x: 28, y: 44 }, { x: 17, y: 54 }, { x: 34, y: 60 }, { x: 53, y: 57 },
-  { x: 72, y: 63 }, { x: 63, y: 72 }, { x: 45, y: 76 }, { x: 26, y: 81 }, { x: 15, y: 90 },
-  { x: 38, y: 90 }, { x: 58, y: 86 }, { x: 76, y: 82 }, { x: 70, y: 93 }, { x: 50, y: 94 },
-];
-
-function mapPathPoints() {
-  return mapPoints.map((p) => `${p.x},${p.y}`).join(' ');
-}
-
 function loadProgress(): Progress {
   if (typeof window === 'undefined') return defaultProgress;
   try {
-    const raw = JSON.parse(localStorage.getItem('piliEnglishProgress_v2') || '{}');
+    const raw = JSON.parse(localStorage.getItem('piliEnglishProgressV3') || '{}');
     return { ...defaultProgress, ...raw, englishStars: { ...defaultProgress.englishStars, ...(raw.englishStars || {}) } };
   } catch {
     return defaultProgress;
@@ -401,7 +453,7 @@ export default function Page() {
 
   useEffect(() => setProgress(loadProgress()), []);
   useEffect(() => {
-    localStorage.setItem('piliEnglishProgress_v2', JSON.stringify(progress));
+    localStorage.setItem('piliEnglishProgressV3', JSON.stringify(progress));
   }, [progress]);
 
   const currentStep = activeLevel?.steps[stepIndex];
@@ -565,10 +617,14 @@ export default function Page() {
   }
 
   if (screen === 'home') {
-    return <main className="homeScreen" style={{ backgroundImage: 'linear-gradient(180deg,#00000010,#00000055),url(/assets/backgrounds/home.png)' }}>
+    return <main className="homeScreen bgHome">
       <Hud progress={progress} />
       <section className="homeCard">
-        <img src="/assets/logo-transparent.png" alt="Las Aventuras de Pili" className="homeLogo" />
+        <picture>
+          <source media="(min-width: 1200px)" srcSet="/assets/logo-desktop.webp" />
+          <source media="(min-width: 768px)" srcSet="/assets/logo-tablet.webp" />
+          <img src="/assets/logo-mobile.webp" alt="Las Aventuras de Pili" className="homeLogo" />
+        </picture>
         <div className="homeHint">Elegí una aventura</div>
         <div className="subjectButtons">
           <button className="subjectBtn math" onClick={() => playSound('hint')}>➕ Matemáticas <small>Próximamente</small></button>
@@ -580,51 +636,21 @@ export default function Page() {
   }
 
   if (screen === 'englishMap') {
-    const currentPoint = mapPoints[Math.min(progress.englishUnlocked - 1, mapPoints.length - 1)] || mapPoints[0];
-    return <main className="mapScreen englishWorld" style={{ backgroundImage: 'linear-gradient(180deg,#00000005,#00000005 45%,#00000075),url(/assets/backgrounds/english.png)' }}>
+    return <main className="mapScreen bgEnglish">
       <Top title="Mundo Inglés" progress={progress} back={() => setScreen('home')} />
-      <section className="mapHeader compact">
+      <section className="mapHeader">
         <h1>🇬🇧 Mundo Inglés</h1>
-        <p>Recetas · Vocabulario · Tricky Words · Phonics</p>
+        <p>Food · Cooking Verbs · Kitchen Equipment · Adjectives · A/AN · Plurals · Tricky Words · Phonics · Reading · Writing</p>
       </section>
-      <div className="levelMap adventurePathMap" aria-label="Mapa de niveles de inglés">
-        <svg className="pathSvg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-          <polyline className="pathShadow" points={mapPathPoints()} />
-          <polyline className="pathLine" points={mapPathPoints()} />
-          {mapPoints.slice(0, levels.length - 1).map((p, i) => {
-            const next = mapPoints[i + 1];
-            const mx = (p.x + next.x) / 2;
-            const my = (p.y + next.y) / 2;
-            return <circle key={`dot-${i}`} className="pathDot" cx={mx} cy={my} r="1.15" />;
-          })}
-        </svg>
-        <img
-          src="/assets/characters/pili-front.png"
-          alt="Pili"
-          className="piliMarker"
-          style={{ left: `${currentPoint.x}%`, top: `${currentPoint.y}%` }}
-        />
+      <div className="levelMap">
         {levels.map((level, i) => {
-          const point = mapPoints[i] || mapPoints[mapPoints.length - 1];
           const unlocked = level.id <= progress.englishUnlocked;
           const stars = progress.englishStars[level.id] || 0;
-          const isCurrent = level.id === progress.englishUnlocked;
-          const status = stars ? 'done' : isCurrent ? 'current' : unlocked ? 'open' : 'locked';
-          return <button
-            key={level.id}
-            className={`adventureNode ${status}`}
-            style={{ left: `${point.x}%`, top: `${point.y}%` }}
-            onClick={() => unlocked ? startLevel(level) : playSound('bad')}
-            aria-label={`Nivel ${level.id}: ${level.title}`}
-          >
-            <span className="nodeNumber">{level.id}</span>
-            <span className="nodeStars">{stars ? '★★★' : isCurrent ? '☆☆☆' : ''}</span>
+          return <button key={level.id} className={`levelNode pos${(i % 20) + 1} ${unlocked ? 'unlocked' : 'locked'} ${stars ? 'done' : ''}`} onClick={() => unlocked ? startLevel(level) : playSound('bad')}>
+            <span className="nodeIcon">{level.id}</span>
+            <span className="nodeStars">{stars ? '⭐⭐⭐' : unlocked ? '☆☆☆' : ''}</span>
           </button>;
         })}
-        <div className="mapLegend">
-          <b>Nivel {progress.englishUnlocked}</b>
-          <span>{levels[Math.min(progress.englishUnlocked - 1, levels.length - 1)]?.title}</span>
-        </div>
       </div>
       <button className="homeMini" onClick={() => setScreen('home')}>🏠 Casa</button>
     </main>;

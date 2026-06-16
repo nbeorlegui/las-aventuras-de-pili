@@ -22,8 +22,83 @@ const defaultProgress = {
 const levels = [
     {
         id: 1,
-        title: 'Recipe Academy',
-        subtitle: 'Partes de una receta',
+        title: 'Food Vocabulary',
+        subtitle: 'Comidas pp.87-89',
+        world: 'Food Island',
+        icon: '🍎',
+        kind: 'choice',
+        steps: [
+            {
+                type: 'theory',
+                title: 'Food = Comida',
+                blocks: [
+                    {
+                        en: 'Fruit',
+                        es: 'Fruta',
+                        example: 'apple, banana, orange, kiwi, strawberry, cherry'
+                    },
+                    {
+                        en: 'Food for recipes',
+                        es: 'Comida para recetas',
+                        example: 'bread, ham, cheese, lettuce, tomato'
+                    },
+                    {
+                        en: 'Baking food',
+                        es: 'Ingredientes para hornear',
+                        example: 'eggs, flour, milk, sugar, butter'
+                    },
+                    {
+                        en: 'Drinks',
+                        es: 'Bebidas',
+                        example: 'water, milk, lemonade, milkshake'
+                    }
+                ]
+            },
+            {
+                type: 'choice',
+                prompt: 'apple',
+                spanish: '¿Qué significa?',
+                options: [
+                    'manzana',
+                    'lechuga',
+                    'harina'
+                ],
+                answer: 'manzana',
+                hint: 'Es una fruta roja o verde.',
+                explain: 'Apple = manzana.'
+            },
+            {
+                type: 'choice',
+                prompt: 'flour',
+                spanish: '¿Qué significa?',
+                options: [
+                    'harina',
+                    'banana',
+                    'vaso'
+                ],
+                answer: 'harina',
+                hint: 'Se usa para hacer muffins o tortas.',
+                explain: 'Flour = harina.'
+            },
+            {
+                type: 'choice',
+                prompt: 'lettuce',
+                spanish: '¿Qué significa?',
+                options: [
+                    'lechuga',
+                    'queso',
+                    'huevo'
+                ],
+                answer: 'lechuga',
+                hint: 'Es verde y puede ir en un sandwich.',
+                explain: 'Lettuce = lechuga.'
+            }
+        ]
+    },
+    {
+        id: 2,
+        title: 'Recipe Parts',
+        subtitle: 'Title · Ingredients · Instructions',
         world: 'Recipe Forest',
         icon: '📖',
         kind: 'theory',
@@ -56,6 +131,19 @@ const levels = [
             },
             {
                 type: 'choice',
+                prompt: 'Fruit Salad',
+                spanish: '¿Qué parte de la receta es?',
+                options: [
+                    'Title',
+                    'Ingredients',
+                    'Instructions'
+                ],
+                answer: 'Title',
+                hint: 'Es el nombre de la receta.',
+                explain: 'Fruit Salad es el título.'
+            },
+            {
+                type: 'choice',
                 prompt: 'Apple, banana, milk',
                 spanish: 'manzana, banana, leche',
                 options: [
@@ -83,11 +171,11 @@ const levels = [
         ]
     },
     {
-        id: 2,
+        id: 3,
         title: 'Ingredients Detective',
         subtitle: 'Cosas, no acciones',
         world: 'Recipe Forest',
-        icon: '🍎',
+        icon: '🍓',
         kind: 'choice',
         steps: [
             {
@@ -125,17 +213,52 @@ const levels = [
                 answer: 'Instruction',
                 hint: 'Pour es una acción.',
                 explain: 'Es Instruction porque indica qué hacer.'
+            },
+            {
+                type: 'choice',
+                prompt: 'Chop the banana.',
+                spanish: 'Cortar la banana.',
+                options: [
+                    'Ingredient',
+                    'Instruction'
+                ],
+                answer: 'Instruction',
+                hint: 'Chop es un verbo.',
+                explain: 'Es una instrucción porque empieza con una acción.'
             }
         ]
     },
     {
-        id: 3,
-        title: 'Cooking Verbs 1',
-        subtitle: 'Verbos de cocina',
+        id: 4,
+        title: 'Cooking Verbs',
+        subtitle: 'Verbos de cocina pp.94-95',
         world: 'Cooking Castle',
         icon: '👩‍🍳',
         kind: 'choice',
         steps: [
+            {
+                type: 'theory',
+                title: 'Cooking verbs = acciones de cocina',
+                blocks: [
+                    {
+                        en: 'Wash · Peel · Chop · Slice',
+                        es: 'Lavar · Pelar · Cortar · Cortar en rodajas'
+                    },
+                    {
+                        en: 'Add · Mix · Stir · Pour',
+                        es: 'Agregar · Mezclar · Revolver · Verter'
+                    },
+                    {
+                        en: 'Crack · Bake · Squeeze · Serve',
+                        es: 'Romper · Hornear · Exprimir · Servir'
+                    },
+                    {
+                        en: 'Rule',
+                        es: 'Las instrucciones suelen empezar con un cooking verb.',
+                        example: 'Mix everything. / Pour the milk.'
+                    }
+                ]
+            },
             {
                 type: 'choice',
                 prompt: 'Peel',
@@ -151,42 +274,6 @@ const levels = [
             },
             {
                 type: 'choice',
-                prompt: 'Chop',
-                spanish: 'Elegí el significado',
-                options: [
-                    'Cortar',
-                    'Hornear',
-                    'Enfriar'
-                ],
-                answer: 'Cortar',
-                hint: 'Se hace con cuchillo.',
-                explain: 'Chop = cortar.'
-            },
-            {
-                type: 'choice',
-                prompt: 'Mix',
-                spanish: 'Elegí el significado',
-                options: [
-                    'Mezclar',
-                    'Romper',
-                    'Lavar'
-                ],
-                answer: 'Mezclar',
-                hint: 'Juntar todo en un bowl.',
-                explain: 'Mix = mezclar.'
-            }
-        ]
-    },
-    {
-        id: 4,
-        title: 'Cooking Verbs 2',
-        subtitle: 'Más acciones',
-        world: 'Cooking Castle',
-        icon: '🥣',
-        kind: 'choice',
-        steps: [
-            {
-                type: 'choice',
                 prompt: 'Pour',
                 spanish: 'Elegí el significado',
                 options: [
@@ -200,19 +287,6 @@ const levels = [
             },
             {
                 type: 'choice',
-                prompt: 'Bake',
-                spanish: 'Elegí el significado',
-                options: [
-                    'Hornear',
-                    'Revolver',
-                    'Servir'
-                ],
-                answer: 'Hornear',
-                hint: 'Se hace en el horno.',
-                explain: 'Bake = hornear.'
-            },
-            {
-                type: 'choice',
                 prompt: 'Crack the eggs',
                 spanish: '¿Qué significa?',
                 options: [
@@ -223,17 +297,53 @@ const levels = [
                 answer: 'Romper los huevos',
                 hint: 'Crack = romper.',
                 explain: 'Crack the eggs = romper los huevos.'
+            },
+            {
+                type: 'choice',
+                prompt: 'Squeeze the lemon',
+                spanish: '¿Qué significa?',
+                options: [
+                    'Exprimir el limón',
+                    'Hornear el limón',
+                    'Cortar en rodajas'
+                ],
+                answer: 'Exprimir el limón',
+                hint: 'Se hace para sacar jugo.',
+                explain: 'Squeeze = exprimir.'
             }
         ]
     },
     {
         id: 5,
-        title: 'Kitchen Tools',
+        title: 'Kitchen Equipment',
         subtitle: 'Utensilios p.94',
         world: 'Cooking Castle',
         icon: '🥄',
         kind: 'choice',
         steps: [
+            {
+                type: 'theory',
+                title: 'Kitchen equipment = utensilios de cocina',
+                blocks: [
+                    {
+                        en: 'fridge',
+                        es: 'heladera'
+                    },
+                    {
+                        en: 'cup · glass',
+                        es: 'taza · vaso'
+                    },
+                    {
+                        en: 'spoon · plate · bowl',
+                        es: 'cuchara · plato · bowl/recipiente'
+                    },
+                    {
+                        en: 'blender',
+                        es: 'licuadora',
+                        example: 'We use a blender for a milkshake.'
+                    }
+                ]
+            },
             {
                 type: 'choice',
                 prompt: 'blender',
@@ -272,6 +382,19 @@ const levels = [
                 answer: 'Heladera',
                 hint: 'Sirve para enfriar.',
                 explain: 'Fridge = heladera.'
+            },
+            {
+                type: 'choice',
+                prompt: 'You serve food on a...',
+                spanish: 'Servís comida en un...',
+                options: [
+                    'plate',
+                    'fridge',
+                    'blender'
+                ],
+                answer: 'plate',
+                hint: 'Es un plato.',
+                explain: 'Plate = plato.'
             }
         ]
     },
@@ -283,6 +406,28 @@ const levels = [
         icon: '🍋',
         kind: 'choice',
         steps: [
+            {
+                type: 'theory',
+                title: 'Adjectives describe food',
+                blocks: [
+                    {
+                        en: 'fresh · healthy · unhealthy',
+                        es: 'fresco · saludable · poco saludable'
+                    },
+                    {
+                        en: 'bitter · sour · sweet',
+                        es: 'amargo · ácido · dulce'
+                    },
+                    {
+                        en: 'soft · crispy',
+                        es: 'suave/blando · crocante'
+                    },
+                    {
+                        en: 'light · heavy · tasty · yummy',
+                        es: 'liviano · pesado · rico · delicioso'
+                    }
+                ]
+            },
             {
                 type: 'choice',
                 prompt: 'lemon',
@@ -298,7 +443,7 @@ const levels = [
             },
             {
                 type: 'choice',
-                prompt: 'chocolate',
+                prompt: 'candy',
                 spanish: '¿Cómo es?',
                 options: [
                     'sweet',
@@ -306,8 +451,8 @@ const levels = [
                     'heavy'
                 ],
                 answer: 'sweet',
-                hint: 'El chocolate suele ser dulce.',
-                explain: 'Chocolate is sweet.'
+                hint: 'Los caramelos son dulces.',
+                explain: 'Candy is sweet.'
             },
             {
                 type: 'choice',
@@ -321,6 +466,19 @@ const levels = [
                 answer: 'healthy',
                 hint: 'Una ensalada suele ser saludable.',
                 explain: 'Salad is healthy.'
+            },
+            {
+                type: 'choice',
+                prompt: 'chips',
+                spanish: 'Pueden ser...',
+                options: [
+                    'crispy',
+                    'sour',
+                    'soft'
+                ],
+                answer: 'crispy',
+                hint: 'Hacen crunch.',
+                explain: 'Chips are crispy.'
             }
         ]
     },
@@ -332,6 +490,22 @@ const levels = [
         icon: '🔠',
         kind: 'choice',
         steps: [
+            {
+                type: 'theory',
+                title: 'A / AN',
+                blocks: [
+                    {
+                        en: 'A',
+                        es: 'Se usa antes de sonido consonante.',
+                        example: 'a banana, a cherry, a spoon'
+                    },
+                    {
+                        en: 'AN',
+                        es: 'Se usa antes de sonido vocal.',
+                        example: 'an apple, an orange, an egg'
+                    }
+                ]
+            },
             {
                 type: 'choice',
                 prompt: '___ apple',
@@ -367,17 +541,50 @@ const levels = [
                 answer: 'an',
                 hint: 'Orange empieza con vocal.',
                 explain: 'Se escribe an orange.'
+            },
+            {
+                type: 'choice',
+                prompt: '___ egg',
+                spanish: 'Completá',
+                options: [
+                    'a',
+                    'an'
+                ],
+                answer: 'an',
+                hint: 'Egg empieza con vocal.',
+                explain: 'Se escribe an egg.'
             }
         ]
     },
     {
         id: 8,
         title: 'Plurals',
-        subtitle: 's, es, ies',
+        subtitle: 's, es/oes, ies p.92',
         world: 'Grammar Mountain',
         icon: '🍒',
         kind: 'choice',
         steps: [
+            {
+                type: 'theory',
+                title: 'Plural Rules',
+                blocks: [
+                    {
+                        en: '+ S',
+                        es: 'La mayoría suma S.',
+                        example: 'apple → apples / banana → bananas'
+                    },
+                    {
+                        en: '+ ES',
+                        es: 'Algunas palabras suman ES.',
+                        example: 'tomato → tomatoes / potato → potatoes'
+                    },
+                    {
+                        en: 'Y → IES',
+                        es: 'Si termina en consonante + Y, cambia a IES.',
+                        example: 'cherry → cherries / strawberry → strawberries'
+                    }
+                ]
+            },
             {
                 type: 'choice',
                 prompt: 'apple →',
@@ -416,17 +623,48 @@ const levels = [
                 answer: 'cherries',
                 hint: 'Consonante + y cambia a ies.',
                 explain: 'cherry → cherries.'
+            },
+            {
+                type: 'choice',
+                prompt: 'strawberry →',
+                spanish: 'Plural correcto',
+                options: [
+                    'strawberries',
+                    'strawberrys',
+                    'strawberryes'
+                ],
+                answer: 'strawberries',
+                hint: 'Termina con consonante + Y.',
+                explain: 'strawberry → strawberries.'
             }
         ]
     },
     {
         id: 9,
         title: 'Tricky Words 1',
-        subtitle: 'I, the, he, she',
+        subtitle: 'I · the · he · she · they',
         world: 'Tricky Woods',
         icon: '🧠',
         kind: 'choice',
         steps: [
+            {
+                type: 'theory',
+                title: 'Tricky Words',
+                blocks: [
+                    {
+                        en: 'I · the · he · she · they',
+                        es: 'yo · el/la · él · ella · ellos'
+                    },
+                    {
+                        en: 'my · like · no · go · to',
+                        es: 'mi · gustar · no · ir · a/para'
+                    },
+                    {
+                        en: 'we · you · your',
+                        es: 'nosotros · vos/ustedes · tu/tus'
+                    }
+                ]
+            },
             {
                 type: 'choice',
                 prompt: '___ like apples.',
@@ -455,40 +693,27 @@ const levels = [
             },
             {
                 type: 'choice',
-                prompt: '___ is my dad.',
-                spanish: 'Él es mi papá.',
+                prompt: '___ is my mum.',
+                spanish: 'Ella es mi mamá.',
                 options: [
-                    'He',
                     'She',
+                    'He',
                     'They'
                 ],
-                answer: 'He',
-                hint: 'Él = He.',
-                explain: 'He is my dad.'
+                answer: 'She',
+                hint: 'Ella = She.',
+                explain: 'She is my mum.'
             }
         ]
     },
     {
         id: 10,
         title: 'Tricky Words 2',
-        subtitle: 'we, you, your',
+        subtitle: 'my · like · no · go · to · we · you · your',
         world: 'Tricky Woods',
         icon: '✨',
         kind: 'choice',
         steps: [
-            {
-                type: 'choice',
-                prompt: '___ are friends.',
-                spanish: 'Nosotros somos amigos.',
-                options: [
-                    'We',
-                    'Go',
-                    'My'
-                ],
-                answer: 'We',
-                hint: 'Nosotros = We.',
-                explain: 'We are friends.'
-            },
             {
                 type: 'choice',
                 prompt: 'This is ___ book.',
@@ -504,27 +729,69 @@ const levels = [
             },
             {
                 type: 'choice',
-                prompt: 'I like ___ recipe.',
-                spanish: 'Me gusta tu receta.',
+                prompt: '___ are friends.',
+                spanish: 'Nosotros somos amigos.',
                 options: [
-                    'your',
-                    'you',
-                    'go'
+                    'We',
+                    'Go',
+                    'My'
                 ],
-                answer: 'your',
-                hint: 'Antes de recipe usamos your.',
-                explain: 'I like your recipe.'
+                answer: 'We',
+                hint: 'Nosotros = We.',
+                explain: 'We are friends.'
+            },
+            {
+                type: 'choice',
+                prompt: 'I ___ lemonade.',
+                spanish: 'Me gusta la limonada.',
+                options: [
+                    'like',
+                    'to',
+                    'your'
+                ],
+                answer: 'like',
+                hint: 'Me gusta = I like.',
+                explain: 'I like lemonade.'
+            },
+            {
+                type: 'choice',
+                prompt: 'I go ___ school.',
+                spanish: 'Voy a la escuela.',
+                options: [
+                    'to',
+                    'the',
+                    'no'
+                ],
+                answer: 'to',
+                hint: 'A/para = to.',
+                explain: 'I go to school.'
             }
         ]
     },
     {
         id: 11,
-        title: 'Phonics 1',
-        subtitle: 'S A T P I N',
+        title: 'Phonics 1st Form A',
+        subtitle: 'S A T P I N M D G O C K CK',
         world: 'Phonics Island',
         icon: '🔊',
         kind: 'choice',
         steps: [
+            {
+                type: 'theory',
+                title: 'Phonics sounds',
+                blocks: [
+                    {
+                        en: 'S A T P I N',
+                        es: 'Sonidos iniciales para leer palabras cortas.',
+                        example: 'sat, pin, tin, tap'
+                    },
+                    {
+                        en: 'M D G O C K CK',
+                        es: 'Más sonidos para formar palabras.',
+                        example: 'dog, mop, cat, kick'
+                    }
+                ]
+            },
             {
                 type: 'choice',
                 prompt: '¿Cuál palabra empieza con S?',
@@ -553,25 +820,87 @@ const levels = [
             },
             {
                 type: 'choice',
-                prompt: '¿Cuál palabra tiene N?',
-                spanish: 'N sound',
+                prompt: '¿Cuál palabra tiene CK?',
+                spanish: 'CK sound',
                 options: [
-                    'banana',
-                    'cup',
-                    'fish'
+                    'duck',
+                    'chair',
+                    'rain'
                 ],
-                answer: 'banana',
-                hint: 'Banana termina con N-A.',
-                explain: 'banana tiene N.'
+                answer: 'duck',
+                hint: 'Duck termina con CK.',
+                explain: 'duck tiene CK.'
             }
         ]
     },
     {
         id: 12,
-        title: 'Phonics 2',
-        subtitle: 'CH, SH, TH',
+        title: 'Phonics 1st Form B',
+        subtitle: 'E U R H B F FF L LL LE SS J V W X Z Y',
         world: 'Phonics Island',
         icon: '🎧',
+        kind: 'choice',
+        steps: [
+            {
+                type: 'choice',
+                prompt: '¿Cuál palabra tiene FF?',
+                spanish: 'FF sound',
+                options: [
+                    'muffin',
+                    'dog',
+                    'apple'
+                ],
+                answer: 'muffin',
+                hint: 'Muffin tiene FF.',
+                explain: 'muffin tiene FF.'
+            },
+            {
+                type: 'choice',
+                prompt: '¿Cuál palabra termina con LL?',
+                spanish: 'LL sound',
+                options: [
+                    'bell',
+                    'boat',
+                    'rain'
+                ],
+                answer: 'bell',
+                hint: 'Bell termina con LL.',
+                explain: 'bell tiene LL.'
+            },
+            {
+                type: 'choice',
+                prompt: '¿Cuál palabra tiene SS?',
+                spanish: 'SS sound',
+                options: [
+                    'glass',
+                    'cherry',
+                    'moon'
+                ],
+                answer: 'glass',
+                hint: 'Glass tiene SS.',
+                explain: 'glass tiene SS.'
+            },
+            {
+                type: 'choice',
+                prompt: '¿Cuál palabra empieza con W?',
+                spanish: 'W sound',
+                options: [
+                    'water',
+                    'egg',
+                    'lemon'
+                ],
+                answer: 'water',
+                hint: 'Water empieza con W.',
+                explain: 'water empieza con W.'
+            }
+        ]
+    },
+    {
+        id: 13,
+        title: 'Phonics 1st Form C',
+        subtitle: 'CH · SH · TH',
+        world: 'Phonics Island',
+        icon: '🌈',
         kind: 'choice',
         steps: [
             {
@@ -616,13 +945,29 @@ const levels = [
         ]
     },
     {
-        id: 13,
-        title: 'Phonics 3',
-        subtitle: 'AI, EE, IGH, OA, OO',
+        id: 14,
+        title: 'Phonics 2nd Form',
+        subtitle: 'AI WH VE DGE TCH NK EE IGH OA OO UR',
         world: 'Phonics Island',
-        icon: '🌈',
+        icon: '🔡',
         kind: 'choice',
         steps: [
+            {
+                type: 'theory',
+                title: '2nd Form sounds',
+                blocks: [
+                    {
+                        en: 'AI · EE · IGH · OA · OO · UR',
+                        es: 'Sonidos largos / combinaciones.',
+                        example: 'rain, tree, night, boat, moon, turn'
+                    },
+                    {
+                        en: 'WH · -VE · DGE · TCH · NK',
+                        es: 'Combinaciones importantes.',
+                        example: 'whale, five, bridge, watch, pink'
+                    }
+                ]
+            },
             {
                 type: 'choice',
                 prompt: '¿Cuál palabra tiene AI?',
@@ -638,34 +983,47 @@ const levels = [
             },
             {
                 type: 'choice',
-                prompt: '¿Cuál palabra tiene EE?',
-                spanish: 'EE sound',
+                prompt: '¿Cuál palabra tiene IGH?',
+                spanish: 'IGH sound',
                 options: [
-                    'tree',
-                    'light',
-                    'moon'
+                    'night',
+                    'spoon',
+                    'chair'
                 ],
-                answer: 'tree',
-                hint: 'Tree tiene EE.',
-                explain: 'tree tiene EE.'
+                answer: 'night',
+                hint: 'Night tiene IGH.',
+                explain: 'night tiene IGH.'
             },
             {
                 type: 'choice',
-                prompt: '¿Cuál palabra tiene OA?',
-                spanish: 'OA sound',
+                prompt: '¿Cuál palabra tiene TCH?',
+                spanish: 'TCH sound',
                 options: [
-                    'boat',
-                    'spoon',
-                    'night'
+                    'watch',
+                    'whale',
+                    'tree'
                 ],
-                answer: 'boat',
-                hint: 'Boat tiene OA.',
-                explain: 'boat tiene OA.'
+                answer: 'watch',
+                hint: 'Watch termina con TCH.',
+                explain: 'watch tiene TCH.'
+            },
+            {
+                type: 'choice',
+                prompt: '¿Cuál palabra tiene NK?',
+                spanish: 'NK sound',
+                options: [
+                    'pink',
+                    'moon',
+                    'boat'
+                ],
+                answer: 'pink',
+                hint: 'Pink termina con NK.',
+                explain: 'pink tiene NK.'
             }
         ]
     },
     {
-        id: 14,
+        id: 15,
         title: 'Order the Recipe',
         subtitle: 'Ordenar instrucciones',
         world: 'Recipe Harbor',
@@ -690,13 +1048,32 @@ const levels = [
                 ],
                 hint: 'Pensá qué harías primero en la cocina.',
                 explain: 'Orden correcto: Wash, Chop, Mix, Serve.'
+            },
+            {
+                type: 'sequence',
+                prompt: 'Ordená la receta de Vanilla Milkshake',
+                spanish: 'Primero leche, luego helado, mezclar y servir.',
+                options: [
+                    'Mix everything.',
+                    'Pour the milk into the blender.',
+                    'Serve in a glass.',
+                    'Add the ice cream.'
+                ],
+                answer: [
+                    'Pour the milk into the blender.',
+                    'Add the ice cream.',
+                    'Mix everything.',
+                    'Serve in a glass.'
+                ],
+                hint: 'Para un milkshake primero usamos la licuadora.',
+                explain: 'Orden correcto: Pour, Add, Mix, Serve.'
             }
         ]
     },
     {
-        id: 15,
+        id: 16,
         title: 'Recipe Builder',
-        subtitle: 'Armar una receta',
+        subtitle: 'Armar una receta escrita',
         world: 'Recipe Harbor',
         icon: '🍓',
         kind: 'builder',
@@ -722,20 +1099,40 @@ const levels = [
                     'Chill the salad.'
                 ],
                 hint: 'Ingredientes son cosas/comidas, no acciones.'
+            },
+            {
+                type: 'builder',
+                prompt: 'Elegí SOLO los ingredientes para Vanilla Milkshake.',
+                ingredients: [
+                    'milk',
+                    'vanilla ice cream',
+                    'vanilla extract',
+                    'cherry'
+                ],
+                instructions: [
+                    'Pour the milk.',
+                    'Mix everything.'
+                ],
+                wrongItems: [
+                    'Add the ice cream.',
+                    'Serve in a glass.',
+                    'Wash the fruit.'
+                ],
+                hint: 'Ingredientes son cosas que van en la receta.'
             }
         ]
     },
     {
-        id: 16,
-        title: 'Mock Reading 1',
-        subtitle: 'Muffins',
+        id: 17,
+        title: 'Reading Poems',
+        subtitle: 'Poemas sobre comida',
         world: 'Reading Kingdom',
         icon: '📘',
         kind: 'mock',
         steps: [
             {
                 type: 'mock',
-                textTitle: 'Text A - Muffins',
+                textTitle: 'Text A - Muffins Poem',
                 text: [
                     'Crack the eggs,',
                     'Pour the milk,',
@@ -780,14 +1177,26 @@ const levels = [
                         answer: 'yummy',
                         hint: 'Yummy significa delicioso.',
                         explain: 'Yummy muestra que la comida es rica.'
+                    },
+                    {
+                        type: 'choice',
+                        prompt: 'Find one tricky word.',
+                        options: [
+                            'the',
+                            'flour',
+                            'muffins'
+                        ],
+                        answer: 'the',
+                        hint: 'The está en la lista de tricky words.',
+                        explain: 'The es tricky word.'
                     }
                 ]
             }
         ]
     },
     {
-        id: 17,
-        title: 'Mock Reading 2',
+        id: 18,
+        title: 'Reading Recipes 1',
         subtitle: 'Vanilla Milkshake',
         world: 'Reading Kingdom',
         icon: '🥤',
@@ -797,12 +1206,14 @@ const levels = [
                 type: 'mock',
                 textTitle: 'Text B - Vanilla Milkshake',
                 text: [
-                    'Ingredients: vanilla ice cream, milk, vanilla extract.',
+                    'Title: Vanilla Milkshake',
+                    'Ingredients: 2 scoops of vanilla ice cream, milk, vanilla extract, whipped cream, cherry.',
                     'Instructions:',
                     '1. Pour the milk into the blender.',
-                    '2. Add the ice cream.',
+                    '2. Add the ice cream and vanilla extract.',
                     '3. Mix everything.',
-                    '4. Serve with a cherry.'
+                    '4. Pour into a tall glass.',
+                    '5. Serve with a cherry.'
                 ],
                 questions: [
                     {
@@ -819,6 +1230,18 @@ const levels = [
                     },
                     {
                         type: 'choice',
+                        prompt: 'How many scoops of ice cream do you need?',
+                        options: [
+                            '2 scoops',
+                            '3 lemons',
+                            '1 plate'
+                        ],
+                        answer: '2 scoops',
+                        hint: 'Está en Ingredients.',
+                        explain: 'You need 2 scoops.'
+                    },
+                    {
+                        type: 'choice',
                         prompt: 'Why are Pour, Add, Mix and Serve important?',
                         options: [
                             'They tell us what to do',
@@ -828,27 +1251,15 @@ const levels = [
                         answer: 'They tell us what to do',
                         hint: 'Son cooking verbs.',
                         explain: 'Son instrucciones/acciones.'
-                    },
-                    {
-                        type: 'choice',
-                        prompt: 'Where do you pour the milk?',
-                        options: [
-                            'into the blender',
-                            'on a plate',
-                            'in the fridge'
-                        ],
-                        answer: 'into the blender',
-                        hint: 'Leé el paso 1.',
-                        explain: 'Pour the milk into the blender.'
                     }
                 ]
             }
         ]
     },
     {
-        id: 18,
-        title: 'Healthy Sandwich',
-        subtitle: 'Comprensión lectora',
+        id: 19,
+        title: 'Reading Recipes 2',
+        subtitle: 'Sandwich + Lemonade',
         world: 'Reading Kingdom',
         icon: '🥪',
         kind: 'mock',
@@ -903,17 +1314,7 @@ const levels = [
                         explain: 'Plate = plato.'
                     }
                 ]
-            }
-        ]
-    },
-    {
-        id: 19,
-        title: 'Fresh Lemonade',
-        subtitle: 'Lectura + ingredientes',
-        world: 'Reading Kingdom',
-        icon: '🍋',
-        kind: 'mock',
-        steps: [
+            },
             {
                 type: 'mock',
                 textTitle: 'Text B - Fresh Lemonade',
@@ -969,9 +1370,9 @@ const levels = [
     },
     {
         id: 20,
-        title: 'Big Ben Challenge',
-        subtitle: 'Desafío final',
-        world: 'Final Challenge',
+        title: 'Mid-Term Challenge',
+        subtitle: 'Reading + Writing final',
+        world: 'Big Ben Challenge',
         icon: '🏆',
         kind: 'choice',
         steps: [
@@ -1013,95 +1414,36 @@ const levels = [
                 answer: 'An apple is sweet.',
                 hint: 'Apple empieza con vocal.',
                 explain: 'Correcto: An apple is sweet.'
+            },
+            {
+                type: 'choice',
+                prompt: 'Choose the correct recipe part for: Mix everything.',
+                spanish: 'Elegí la parte correcta.',
+                options: [
+                    'Instructions',
+                    'Ingredients',
+                    'Title'
+                ],
+                answer: 'Instructions',
+                hint: 'Mix es una acción.',
+                explain: 'Mix everything va en Instructions.'
+            },
+            {
+                type: 'choice',
+                prompt: 'strawberry →',
+                spanish: 'Plural correcto',
+                options: [
+                    'strawberries',
+                    'strawberrys',
+                    'strawberryes'
+                ],
+                answer: 'strawberries',
+                hint: 'Y cambia a IES.',
+                explain: 'strawberry → strawberries.'
             }
         ]
     }
 ];
-const mapPoints = [
-    {
-        x: 18,
-        y: 16
-    },
-    {
-        x: 34,
-        y: 20
-    },
-    {
-        x: 52,
-        y: 18
-    },
-    {
-        x: 69,
-        y: 25
-    },
-    {
-        x: 61,
-        y: 34
-    },
-    {
-        x: 45,
-        y: 39
-    },
-    {
-        x: 28,
-        y: 44
-    },
-    {
-        x: 17,
-        y: 54
-    },
-    {
-        x: 34,
-        y: 60
-    },
-    {
-        x: 53,
-        y: 57
-    },
-    {
-        x: 72,
-        y: 63
-    },
-    {
-        x: 63,
-        y: 72
-    },
-    {
-        x: 45,
-        y: 76
-    },
-    {
-        x: 26,
-        y: 81
-    },
-    {
-        x: 15,
-        y: 90
-    },
-    {
-        x: 38,
-        y: 90
-    },
-    {
-        x: 58,
-        y: 86
-    },
-    {
-        x: 76,
-        y: 82
-    },
-    {
-        x: 70,
-        y: 93
-    },
-    {
-        x: 50,
-        y: 94
-    }
-];
-function mapPathPoints() {
-    return mapPoints.map((p)=>`${p.x},${p.y}`).join(' ');
-}
 function loadProgress() {
     if ("TURBOPACK compile-time truthy", 1) return defaultProgress;
     //TURBOPACK unreachable
@@ -1137,7 +1479,7 @@ function Page() {
     const [canUnderstand, setCanUnderstand] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>setProgress(loadProgress()), []);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        localStorage.setItem('piliEnglishProgress_v2', JSON.stringify(progress));
+        localStorage.setItem('piliEnglishProgressV3', JSON.stringify(progress));
     }, [
         progress
     ]);
@@ -1302,28 +1644,49 @@ function Page() {
     }
     if (screen === 'home') {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
-            className: "homeScreen",
-            style: {
-                backgroundImage: 'linear-gradient(180deg,#00000010,#00000055),url(/assets/backgrounds/home.png)'
-            },
+            className: "homeScreen bgHome",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Hud, {
                     progress: progress
                 }, void 0, false, {
                     fileName: "[project]/app/page.tsx",
-                    lineNumber: 569,
+                    lineNumber: 621,
                     columnNumber: 7
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
                     className: "homeCard",
                     children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                            src: "/assets/logo-transparent.png",
-                            alt: "Las Aventuras de Pili",
-                            className: "homeLogo"
-                        }, void 0, false, {
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("picture", {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("source", {
+                                    media: "(min-width: 1200px)",
+                                    srcSet: "/assets/logo-desktop.webp"
+                                }, void 0, false, {
+                                    fileName: "[project]/app/page.tsx",
+                                    lineNumber: 624,
+                                    columnNumber: 11
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("source", {
+                                    media: "(min-width: 768px)",
+                                    srcSet: "/assets/logo-tablet.webp"
+                                }, void 0, false, {
+                                    fileName: "[project]/app/page.tsx",
+                                    lineNumber: 625,
+                                    columnNumber: 11
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                    src: "/assets/logo-mobile.webp",
+                                    alt: "Las Aventuras de Pili",
+                                    className: "homeLogo"
+                                }, void 0, false, {
+                                    fileName: "[project]/app/page.tsx",
+                                    lineNumber: 626,
+                                    columnNumber: 11
+                                }, this)
+                            ]
+                        }, void 0, true, {
                             fileName: "[project]/app/page.tsx",
-                            lineNumber: 571,
+                            lineNumber: 623,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1331,7 +1694,7 @@ function Page() {
                             children: "Elegí una aventura"
                         }, void 0, false, {
                             fileName: "[project]/app/page.tsx",
-                            lineNumber: 572,
+                            lineNumber: 628,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1346,13 +1709,13 @@ function Page() {
                                             children: "Próximamente"
                                         }, void 0, false, {
                                             fileName: "[project]/app/page.tsx",
-                                            lineNumber: 574,
+                                            lineNumber: 630,
                                             columnNumber: 95
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/page.tsx",
-                                    lineNumber: 574,
+                                    lineNumber: 630,
                                     columnNumber: 11
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1364,13 +1727,13 @@ function Page() {
                                             children: "Próximamente"
                                         }, void 0, false, {
                                             fileName: "[project]/app/page.tsx",
-                                            lineNumber: 575,
+                                            lineNumber: 631,
                                             columnNumber: 93
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/page.tsx",
-                                    lineNumber: 575,
+                                    lineNumber: 631,
                                     columnNumber: 11
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1382,41 +1745,37 @@ function Page() {
                                             children: "Jugar ahora"
                                         }, void 0, false, {
                                             fileName: "[project]/app/page.tsx",
-                                            lineNumber: 576,
+                                            lineNumber: 632,
                                             columnNumber: 87
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/page.tsx",
-                                    lineNumber: 576,
+                                    lineNumber: 632,
                                     columnNumber: 11
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/page.tsx",
-                            lineNumber: 573,
+                            lineNumber: 629,
                             columnNumber: 9
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/page.tsx",
-                    lineNumber: 570,
+                    lineNumber: 622,
                     columnNumber: 7
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/page.tsx",
-            lineNumber: 568,
+            lineNumber: 620,
             columnNumber: 12
         }, this);
     }
     if (screen === 'englishMap') {
-        const currentPoint = mapPoints[Math.min(progress.englishUnlocked - 1, mapPoints.length - 1)] || mapPoints[0];
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
-            className: "mapScreen englishWorld",
-            style: {
-                backgroundImage: 'linear-gradient(180deg,#00000005,#00000005 45%,#00000075),url(/assets/backgrounds/english.png)'
-            },
+            className: "mapScreen bgEnglish",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Top, {
                     title: "Mundo Inglés",
@@ -1424,160 +1783,67 @@ function Page() {
                     back: ()=>setScreen('home')
                 }, void 0, false, {
                     fileName: "[project]/app/page.tsx",
-                    lineNumber: 585,
+                    lineNumber: 640,
                     columnNumber: 7
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
-                    className: "mapHeader compact",
+                    className: "mapHeader",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                             children: "🇬🇧 Mundo Inglés"
                         }, void 0, false, {
                             fileName: "[project]/app/page.tsx",
-                            lineNumber: 587,
+                            lineNumber: 642,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                            children: "Recetas · Vocabulario · Tricky Words · Phonics"
+                            children: "Food · Cooking Verbs · Kitchen Equipment · Adjectives · A/AN · Plurals · Tricky Words · Phonics · Reading · Writing"
                         }, void 0, false, {
                             fileName: "[project]/app/page.tsx",
-                            lineNumber: 588,
+                            lineNumber: 643,
                             columnNumber: 9
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/page.tsx",
-                    lineNumber: 586,
+                    lineNumber: 641,
                     columnNumber: 7
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "levelMap adventurePathMap",
-                    "aria-label": "Mapa de niveles de inglés",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                            className: "pathSvg",
-                            viewBox: "0 0 100 100",
-                            preserveAspectRatio: "none",
-                            "aria-hidden": "true",
+                    className: "levelMap",
+                    children: levels.map((level, i)=>{
+                        const unlocked = level.id <= progress.englishUnlocked;
+                        const stars = progress.englishStars[level.id] || 0;
+                        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                            className: `levelNode pos${i % 20 + 1} ${unlocked ? 'unlocked' : 'locked'} ${stars ? 'done' : ''}`,
+                            onClick: ()=>unlocked ? startLevel(level) : playSound('bad'),
                             children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("polyline", {
-                                    className: "pathShadow",
-                                    points: mapPathPoints()
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    className: "nodeIcon",
+                                    children: level.id
                                 }, void 0, false, {
                                     fileName: "[project]/app/page.tsx",
-                                    lineNumber: 592,
-                                    columnNumber: 11
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("polyline", {
-                                    className: "pathLine",
-                                    points: mapPathPoints()
-                                }, void 0, false, {
-                                    fileName: "[project]/app/page.tsx",
-                                    lineNumber: 593,
-                                    columnNumber: 11
-                                }, this),
-                                mapPoints.slice(0, levels.length - 1).map((p, i)=>{
-                                    const next = mapPoints[i + 1];
-                                    const mx = (p.x + next.x) / 2;
-                                    const my = (p.y + next.y) / 2;
-                                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
-                                        className: "pathDot",
-                                        cx: mx,
-                                        cy: my,
-                                        r: "1.15"
-                                    }, `dot-${i}`, false, {
-                                        fileName: "[project]/app/page.tsx",
-                                        lineNumber: 598,
-                                        columnNumber: 20
-                                    }, this);
-                                })
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/app/page.tsx",
-                            lineNumber: 591,
-                            columnNumber: 9
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                            src: "/assets/characters/pili-front.png",
-                            alt: "Pili",
-                            className: "piliMarker",
-                            style: {
-                                left: `${currentPoint.x}%`,
-                                top: `${currentPoint.y}%`
-                            }
-                        }, void 0, false, {
-                            fileName: "[project]/app/page.tsx",
-                            lineNumber: 601,
-                            columnNumber: 9
-                        }, this),
-                        levels.map((level, i)=>{
-                            const point = mapPoints[i] || mapPoints[mapPoints.length - 1];
-                            const unlocked = level.id <= progress.englishUnlocked;
-                            const stars = progress.englishStars[level.id] || 0;
-                            const isCurrent = level.id === progress.englishUnlocked;
-                            const status = stars ? 'done' : isCurrent ? 'current' : unlocked ? 'open' : 'locked';
-                            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                className: `adventureNode ${status}`,
-                                style: {
-                                    left: `${point.x}%`,
-                                    top: `${point.y}%`
-                                },
-                                onClick: ()=>unlocked ? startLevel(level) : playSound('bad'),
-                                "aria-label": `Nivel ${level.id}: ${level.title}`,
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "nodeNumber",
-                                        children: level.id
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/page.tsx",
-                                        lineNumber: 620,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "nodeStars",
-                                        children: stars ? '★★★' : isCurrent ? '☆☆☆' : ''
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/page.tsx",
-                                        lineNumber: 621,
-                                        columnNumber: 13
-                                    }, this)
-                                ]
-                            }, level.id, true, {
-                                fileName: "[project]/app/page.tsx",
-                                lineNumber: 613,
-                                columnNumber: 18
-                            }, this);
-                        }),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "mapLegend",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("b", {
-                                    children: [
-                                        "Nivel ",
-                                        progress.englishUnlocked
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/app/page.tsx",
-                                    lineNumber: 625,
-                                    columnNumber: 11
+                                    lineNumber: 650,
+                                    columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    children: levels[Math.min(progress.englishUnlocked - 1, levels.length - 1)]?.title
+                                    className: "nodeStars",
+                                    children: stars ? '⭐⭐⭐' : unlocked ? '☆☆☆' : ''
                                 }, void 0, false, {
                                     fileName: "[project]/app/page.tsx",
-                                    lineNumber: 626,
-                                    columnNumber: 11
+                                    lineNumber: 651,
+                                    columnNumber: 13
                                 }, this)
                             ]
-                        }, void 0, true, {
+                        }, level.id, true, {
                             fileName: "[project]/app/page.tsx",
-                            lineNumber: 624,
-                            columnNumber: 9
-                        }, this)
-                    ]
-                }, void 0, true, {
+                            lineNumber: 649,
+                            columnNumber: 18
+                        }, this);
+                    })
+                }, void 0, false, {
                     fileName: "[project]/app/page.tsx",
-                    lineNumber: 590,
+                    lineNumber: 645,
                     columnNumber: 7
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1586,13 +1852,13 @@ function Page() {
                     children: "🏠 Casa"
                 }, void 0, false, {
                     fileName: "[project]/app/page.tsx",
-                    lineNumber: 629,
+                    lineNumber: 655,
                     columnNumber: 7
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/page.tsx",
-            lineNumber: 584,
+            lineNumber: 639,
             columnNumber: 12
         }, this);
     }
@@ -1606,7 +1872,7 @@ function Page() {
                     back: ()=>setScreen('englishMap')
                 }, void 0, false, {
                     fileName: "[project]/app/page.tsx",
-                    lineNumber: 635,
+                    lineNumber: 661,
                     columnNumber: 7
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1619,7 +1885,7 @@ function Page() {
                                     children: activeLevel.icon
                                 }, void 0, false, {
                                     fileName: "[project]/app/page.tsx",
-                                    lineNumber: 637,
+                                    lineNumber: 663,
                                     columnNumber: 37
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1631,33 +1897,33 @@ function Page() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/page.tsx",
-                                            lineNumber: 637,
+                                            lineNumber: 663,
                                             columnNumber: 73
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("small", {
                                             children: activeLevel.world
                                         }, void 0, false, {
                                             fileName: "[project]/app/page.tsx",
-                                            lineNumber: 637,
+                                            lineNumber: 663,
                                             columnNumber: 102
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/page.tsx",
-                                    lineNumber: 637,
+                                    lineNumber: 663,
                                     columnNumber: 68
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/page.tsx",
-                            lineNumber: 637,
+                            lineNumber: 663,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                             children: activeLevel.title
                         }, void 0, false, {
                             fileName: "[project]/app/page.tsx",
-                            lineNumber: 638,
+                            lineNumber: 664,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1665,7 +1931,7 @@ function Page() {
                             children: activeLevel.subtitle
                         }, void 0, false, {
                             fileName: "[project]/app/page.tsx",
-                            lineNumber: 639,
+                            lineNumber: 665,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(StepView, {
@@ -1679,7 +1945,7 @@ function Page() {
                             onBuild: toggleBuilder
                         }, void 0, false, {
                             fileName: "[project]/app/page.tsx",
-                            lineNumber: 640,
+                            lineNumber: 666,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1687,7 +1953,7 @@ function Page() {
                             children: feedback
                         }, void 0, false, {
                             fileName: "[project]/app/page.tsx",
-                            lineNumber: 641,
+                            lineNumber: 667,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1699,7 +1965,7 @@ function Page() {
                                     children: "💡 Pista"
                                 }, void 0, false, {
                                     fileName: "[project]/app/page.tsx",
-                                    lineNumber: 643,
+                                    lineNumber: 669,
                                     columnNumber: 11
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1708,7 +1974,7 @@ function Page() {
                                     children: "✅ Solución"
                                 }, void 0, false, {
                                     fileName: "[project]/app/page.tsx",
-                                    lineNumber: 644,
+                                    lineNumber: 670,
                                     columnNumber: 11
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1717,7 +1983,7 @@ function Page() {
                                     children: "🔄 Reiniciar"
                                 }, void 0, false, {
                                     fileName: "[project]/app/page.tsx",
-                                    lineNumber: 645,
+                                    lineNumber: 671,
                                     columnNumber: 11
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1727,25 +1993,25 @@ function Page() {
                                     children: "👍 Entendí"
                                 }, void 0, false, {
                                     fileName: "[project]/app/page.tsx",
-                                    lineNumber: 646,
+                                    lineNumber: 672,
                                     columnNumber: 11
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/page.tsx",
-                            lineNumber: 642,
+                            lineNumber: 668,
                             columnNumber: 9
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/page.tsx",
-                    lineNumber: 636,
+                    lineNumber: 662,
                     columnNumber: 7
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/page.tsx",
-            lineNumber: 634,
+            lineNumber: 660,
             columnNumber: 12
         }, this);
     }
@@ -1760,7 +2026,7 @@ function StepView({ step, mockIndex, selected, sequence, builderSelected, onChoo
                     children: step.title
                 }, void 0, false, {
                     fileName: "[project]/app/page.tsx",
-                    lineNumber: 667,
+                    lineNumber: 693,
                     columnNumber: 7
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1772,38 +2038,38 @@ function StepView({ step, mockIndex, selected, sequence, builderSelected, onChoo
                                     children: b.en
                                 }, void 0, false, {
                                     fileName: "[project]/app/page.tsx",
-                                    lineNumber: 668,
+                                    lineNumber: 694,
                                     columnNumber: 97
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     children: b.es
                                 }, void 0, false, {
                                     fileName: "[project]/app/page.tsx",
-                                    lineNumber: 668,
+                                    lineNumber: 694,
                                     columnNumber: 110
                                 }, this),
                                 b.example && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("em", {
                                     children: b.example
                                 }, void 0, false, {
                                     fileName: "[project]/app/page.tsx",
-                                    lineNumber: 668,
+                                    lineNumber: 694,
                                     columnNumber: 143
                                 }, this)
                             ]
                         }, b.en, true, {
                             fileName: "[project]/app/page.tsx",
-                            lineNumber: 668,
+                            lineNumber: 694,
                             columnNumber: 59
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/app/page.tsx",
-                    lineNumber: 668,
+                    lineNumber: 694,
                     columnNumber: 7
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/page.tsx",
-            lineNumber: 666,
+            lineNumber: 692,
             columnNumber: 12
         }, this);
     }
@@ -1818,20 +2084,20 @@ function StepView({ step, mockIndex, selected, sequence, builderSelected, onChoo
                             children: step.textTitle
                         }, void 0, false, {
                             fileName: "[project]/app/page.tsx",
-                            lineNumber: 674,
+                            lineNumber: 700,
                             columnNumber: 33
                         }, this),
                         step.text.map((line)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                 children: line
                             }, line, false, {
                                 fileName: "[project]/app/page.tsx",
-                                lineNumber: 674,
+                                lineNumber: 700,
                                 columnNumber: 81
                             }, this))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/page.tsx",
-                    lineNumber: 674,
+                    lineNumber: 700,
                     columnNumber: 7
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(ChoiceQuestion, {
@@ -1840,7 +2106,7 @@ function StepView({ step, mockIndex, selected, sequence, builderSelected, onChoo
                     onChoose: onChoose
                 }, void 0, false, {
                     fileName: "[project]/app/page.tsx",
-                    lineNumber: 675,
+                    lineNumber: 701,
                     columnNumber: 7
                 }, this)
             ]
@@ -1856,20 +2122,20 @@ function StepView({ step, mockIndex, selected, sequence, builderSelected, onChoo
                             children: step.prompt
                         }, void 0, false, {
                             fileName: "[project]/app/page.tsx",
-                            lineNumber: 680,
+                            lineNumber: 706,
                             columnNumber: 33
                         }, this),
                         step.spanish && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("small", {
                             children: step.spanish
                         }, void 0, false, {
                             fileName: "[project]/app/page.tsx",
-                            lineNumber: 680,
+                            lineNumber: 706,
                             columnNumber: 70
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/page.tsx",
-                    lineNumber: 680,
+                    lineNumber: 706,
                     columnNumber: 7
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1878,12 +2144,12 @@ function StepView({ step, mockIndex, selected, sequence, builderSelected, onChoo
                             children: sequence[i] || `${i + 1}`
                         }, i, false, {
                             fileName: "[project]/app/page.tsx",
-                            lineNumber: 681,
+                            lineNumber: 707,
                             columnNumber: 65
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/app/page.tsx",
-                    lineNumber: 681,
+                    lineNumber: 707,
                     columnNumber: 7
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1894,18 +2160,18 @@ function StepView({ step, mockIndex, selected, sequence, builderSelected, onChoo
                             children: o
                         }, o, false, {
                             fileName: "[project]/app/page.tsx",
-                            lineNumber: 682,
+                            lineNumber: 708,
                             columnNumber: 57
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/app/page.tsx",
-                    lineNumber: 682,
+                    lineNumber: 708,
                     columnNumber: 7
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/page.tsx",
-            lineNumber: 679,
+            lineNumber: 705,
             columnNumber: 12
         }, this);
     }
@@ -1922,12 +2188,12 @@ function StepView({ step, mockIndex, selected, sequence, builderSelected, onChoo
                         children: step.prompt
                     }, void 0, false, {
                         fileName: "[project]/app/page.tsx",
-                        lineNumber: 688,
+                        lineNumber: 714,
                         columnNumber: 33
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/page.tsx",
-                    lineNumber: 688,
+                    lineNumber: 714,
                     columnNumber: 7
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1938,18 +2204,18 @@ function StepView({ step, mockIndex, selected, sequence, builderSelected, onChoo
                             children: item
                         }, item, false, {
                             fileName: "[project]/app/page.tsx",
-                            lineNumber: 689,
+                            lineNumber: 715,
                             columnNumber: 56
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/app/page.tsx",
-                    lineNumber: 689,
+                    lineNumber: 715,
                     columnNumber: 7
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/page.tsx",
-            lineNumber: 687,
+            lineNumber: 713,
             columnNumber: 12
         }, this);
     }
@@ -1959,7 +2225,7 @@ function StepView({ step, mockIndex, selected, sequence, builderSelected, onChoo
         onChoose: onChoose
     }, void 0, false, {
         fileName: "[project]/app/page.tsx",
-        lineNumber: 692,
+        lineNumber: 718,
         columnNumber: 10
     }, this);
 }
@@ -1973,20 +2239,20 @@ function ChoiceQuestion({ q, selected, onChoose }) {
                         children: q.prompt
                     }, void 0, false, {
                         fileName: "[project]/app/page.tsx",
-                        lineNumber: 697,
+                        lineNumber: 723,
                         columnNumber: 31
                     }, this),
                     q.spanish && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("small", {
                         children: q.spanish
                     }, void 0, false, {
                         fileName: "[project]/app/page.tsx",
-                        lineNumber: 697,
+                        lineNumber: 723,
                         columnNumber: 62
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/page.tsx",
-                lineNumber: 697,
+                lineNumber: 723,
                 columnNumber: 5
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1997,18 +2263,18 @@ function ChoiceQuestion({ q, selected, onChoose }) {
                         children: o
                     }, o, false, {
                         fileName: "[project]/app/page.tsx",
-                        lineNumber: 699,
+                        lineNumber: 725,
                         columnNumber: 29
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/app/page.tsx",
-                lineNumber: 698,
+                lineNumber: 724,
                 columnNumber: 5
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/page.tsx",
-        lineNumber: 696,
+        lineNumber: 722,
         columnNumber: 10
     }, this);
 }
@@ -2021,27 +2287,27 @@ function Top({ title, progress, back }) {
                 children: "←"
             }, void 0, false, {
                 fileName: "[project]/app/page.tsx",
-                lineNumber: 706,
+                lineNumber: 732,
                 columnNumber: 5
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("b", {
                 children: title
             }, void 0, false, {
                 fileName: "[project]/app/page.tsx",
-                lineNumber: 707,
+                lineNumber: 733,
                 columnNumber: 5
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Hud, {
                 progress: progress
             }, void 0, false, {
                 fileName: "[project]/app/page.tsx",
-                lineNumber: 708,
+                lineNumber: 734,
                 columnNumber: 5
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/page.tsx",
-        lineNumber: 705,
+        lineNumber: 731,
         columnNumber: 10
     }, this);
 }
@@ -2056,7 +2322,7 @@ function Hud({ progress }) {
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/page.tsx",
-                lineNumber: 713,
+                lineNumber: 739,
                 columnNumber: 31
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2066,7 +2332,7 @@ function Hud({ progress }) {
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/page.tsx",
-                lineNumber: 713,
+                lineNumber: 739,
                 columnNumber: 63
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2076,7 +2342,7 @@ function Hud({ progress }) {
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/page.tsx",
-                lineNumber: 713,
+                lineNumber: 739,
                 columnNumber: 95
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2086,13 +2352,13 @@ function Hud({ progress }) {
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/page.tsx",
-                lineNumber: 713,
+                lineNumber: 739,
                 columnNumber: 126
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/page.tsx",
-        lineNumber: 713,
+        lineNumber: 739,
         columnNumber: 10
     }, this);
 }
